@@ -7,6 +7,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import org.example.gui.LanternaGUI;
 import org.example.gui.GUI;
+import org.example.model.Position;
 
 import java.awt.*;
 import java.io.IOException;
@@ -17,8 +18,7 @@ public class Game {
     private final LanternaGUI GUI;
 
     public Game() throws IOException, FontFormatException, URISyntaxException {
-        this.GUI = new LanternaGUI(20, 20);
-
+        this.GUI = new LanternaGUI(40, 40);
     }
 
     public LanternaGUI getGUI(){
@@ -28,6 +28,11 @@ public class Game {
         Game game = new Game();
 
         //As linhas abaixo são de caracter puramente ilustrativo, para mostrar que o código está a funcionar
+
+        game.getGUI().drawWall(new Position(10, 10));
+        game.getGUI().drawHero(new Position(15, 10));
+        game.getGUI().drawEnemy(new Position(20, 10));
+        game.getGUI().drawNPC(new Position(25, 10));
 
         org.example.gui.GUI.GUI_ACTION keyboardAction;
 

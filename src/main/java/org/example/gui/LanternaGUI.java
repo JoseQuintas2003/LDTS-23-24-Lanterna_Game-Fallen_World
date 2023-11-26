@@ -1,6 +1,8 @@
 package org.example.gui;
 
 import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextColor;
+import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
 import com.googlecode.lanterna.input.KeyType;
 import com.googlecode.lanterna.input.MouseAction;
@@ -13,8 +15,10 @@ import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import org.example.model.Position;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.util.Arrays;
 
 public class LanternaGUI implements GUI{
@@ -26,11 +30,12 @@ public class LanternaGUI implements GUI{
         this.screen = screen;
     }
 
-    private Terminal createTerminal(int width, int height) throws IOException {
+    private Terminal createTerminal(int width, int height, AWTTerminalFontConfiguration fontConfiguration) throws IOException {
         TerminalSize terminalSize = new TerminalSize(width, height + 1);
         DefaultTerminalFactory terminalFactory = new DefaultTerminalFactory()
                 .setInitialTerminalSize(terminalSize);
         terminalFactory.setForceAWTOverSwing(true);
+        terminalFactory.setTerminalEmulatorFontConfiguration(fontConfiguration);
         Terminal terminal = terminalFactory.createTerminal();
         return terminal;
     }
@@ -46,12 +51,21 @@ public class LanternaGUI implements GUI{
     }
 
     private AWTTerminalFontConfiguration loadFont() throws URISyntaxException, FontFormatException, IOException { //Adicionar depois
-        return null;
+        URL resource = getClass().getClassLoader().getResource("fonts/square.ttf");
+        File fontFile = new File(resource.toURI());
+        Font font = Font.createFont(Font.TRUETYPE_FONT, fontFile);
+
+        GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+        ge.registerFont(font);
+
+        Font loadedFont = font.deriveFont(Font.PLAIN, 25);
+        AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
+        return fontConfig;
     }
 
     public LanternaGUI(int width, int height) throws IOException, FontFormatException, URISyntaxException {
-        //AWTTerminalFontConfiguration fontConfig = loadSquareFont(); Adicionar depois
-        Terminal terminal = createTerminal(width, height);
+        AWTTerminalFontConfiguration fontConfig = loadFont();
+        Terminal terminal = createTerminal(width, height, fontConfig);
         this.screen = createScreen(terminal);
     }
     public GUI_ACTION getKeyboardAction() throws IOException {
@@ -83,38 +97,45 @@ public class LanternaGUI implements GUI{
     }
     */
 
-    @Override
-    public void drawHero(Position position) {
-
+    private void drawCharacter(int x, int y, char c, String color) throws IOException {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.Factory.fromString(color));
+        tg.putString(x, y + 1, "" + c);
+        refresh();
     }
 
     @Override
-    public void drawWall(Position position) {
-
+    public void drawHero(Position position) throws IOException {
+        drawCharacter(position.getX(), position.getY(), 'H', "#FFD700");
     }
 
     @Override
-    public void drawEnemy(Position position) {
-
+    public void drawWall(Position position) throws IOException {
+        drawCharacter(position.getX(), position.getY(), '#', "#3333FF");
     }
 
     @Override
-    public void drawNPC(Position position) {
+    public void drawEnemy(Position position) throws IOException {
+        drawCharacter(position.getX(), position.getY(), '!', "#D32500");
+    }
 
+    @Override
+    public void drawNPC(Position position) throws IOException {
+        drawCharacter(position.getX(), position.getY(), '?', "#17BD00");
     }
 
     @Override
     public void clear() {
-
+        screen.clear();
     }
 
     @Override
-    public void refresh() {
-
+    public void refresh() throws IOException {
+        screen.refresh();
     }
 
     @Override
-    public void close() {
-
+    public void close() throws IOException {
+        screen.close();
     }
 }
