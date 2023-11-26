@@ -1,88 +1,34 @@
-## LDTS_07_07 - <PROJECT NAME>
+## LDTS_07_07 - Fallen World
 
-> In this 2D shooter game, you can help your character survive the zombie apocalypse by shooting all the zombies that 
-> come your way. You can also collect coins and power-ups to help you in your quest.
-> 
->This project was developed by *José Nuno Quintas (up202108712@up.pt)* and *Filipe Alves Afonso (up202205420@up.pt)* for LDTS 2023/2024
+In Fallen World, you can help your character survive the zombie apocalypse by fighting all the zombies that 
+come your way. You can also collect coins and power-ups or help other survivors, that will help you survive for as long as you can.
 
-**Example**:
-
-In this exciting platform game you can help KangarooBoy save the world, by collecting all the coins throughout ten different levels in which you will […].
-
-This project was developed by *John Doe* (*john.doe*@fe.up.pt) and *Jane Doe* (*jane.doe*@fe.up.pt) for LPOO 2018⁄19.
+This project was developed by *José Nuno Quintas (up202108712@up.pt)* and *Filipe Alves Afonso (up202205420@up.pt)* for LDTS 2023/2024
 
 ### IMPLEMENTED FEATURES
 
-> This section should contain a list of implemented features and their descriptions. In the end of the section, include two or three screenshots that illustrate the most important features.
+- **User Input** - The program correctly interprets the keys pressed by the user. This will be used for controlling the player.
+- **Arena Building** - The program can correctly build the arena, including the player, enemies, walls and npcs.
 
-**Examples**:
-
-- **Jumping** - The game character will jump when the space bar key is pressed.
-- **Getting hidden coins** - When the game character hits a platform from below (by jumping beneath it) it will smash that segment of the platform and will get any coins that may exist hidden there.
 
 ### PLANNED FEATURES
 
-> This section is similar to the previous one but should list the features that are not yet implemented. Instead of screenshots you should include GUI mock-ups for the planned features.
+- **Player Movement** - The player will be able to move around the arena, avoiding enemies and walls.
+- **Player Shooting** - The player will be able to shoot bullets, which will damage enemies or destroy them if they suffer enough damage.
+- **Enemy Movement** - The enemies will be able to move around the arena when they detect the player in their vicinity. From here, they will try to get closer to the player, damaging them when in contact.
+- **Power-Ups** - The player will be able to collect power-ups, which will give them a temporary or permanent advantage over the enemies.
+- **NPCs and Quests** - The player will be able to interact with NPCs, which will give them quests that, if concluded, will give rewards to the player.
+- **Score System** - The player will be able to see their score, which will be calculated based on the number of enemies killed, the number of coins collected and the number of quests completed.
+- **Debuffs** - The player will be able to suffer or inflict debuffs on the enemies. Debuffs will give the inflicted entity a temporary or permanent disadvantage over the enemies. Debuffs can also damage the inflicted entity over time.
 
 ### DESIGN
 
-> This section should be organized in different subsections, each describing a different design problem that you had to solve during the project. Each subsection should be organized in four different parts:
+You can find the UML diagram for the project, detailing all classes organizations and interactions in the image below:
 
-- **Problem in Context.** The description of the design context and the concrete problem that motivated the instantiation of the pattern. Someone else other than the original developer should be able to read and understand all the motivations for the decisions made. When refering to the implementation before the pattern was applied, don’t forget to [link to the relevant lines of code](https://help.github.com/en/articles/creating-a-permanent-link-to-a-code-snippet) in the appropriate version.
-- **The Pattern.** Identify the design pattern to be applied, why it was selected and how it is a good fit considering the existing design context and the problem at hand.
-- **Implementation.** Show how the pattern roles, operations and associations were mapped to the concrete design classes. Illustrate it with a UML class diagram, and refer to the corresponding source code with links to the relevant lines (these should be [relative links](https://help.github.com/en/articles/about-readmes#relative-links-and-image-paths-in-readme-files). When doing this, always point to the latest version of the code.
-- **Consequences.** Benefits and liabilities of the design after the pattern instantiation, eventually comparing these consequences with those of alternative solutions.
+![here](imgs/Screenshot_LDTS.png)
 
-**Example of one of such subsections**:
-
-------
-
-#### THE JUMP ACTION OF THE KANGAROOBOY SHOULD BEHAVE DIFFERENTLY DEPENDING ON ITS STATE
-
-**Problem in Context**
-
-There was a lot of scattered conditional logic when deciding how the KangarooBoy should behave when jumping, as the jumps should be different depending on the items that came to his possession during the game (an helix will alow him to fly, driking a potion will allow him to jump double the height, etc.). This is a violation of the **Single Responsability Principle**. We could concentrate all the conditional logic in the same method to circumscribe the issue to that one method but the **Single Responsability Principle** would still be violated.
-
-**The Pattern**
-
-We have applied the **State** pattern. This pattern allows you to represent different states with different subclasses. We can switch to a different state of the application by switching to another implementation (i.e., another subclass). This pattern allowed to address the identified problems because […].
-
-**Implementation**
-
-The following figure shows how the pattern’s roles were mapped to the application classes.
-
-![img](https://www.fe.up.pt/~arestivo/page/img/examples/lpoo/state.svg)
-
-These classes can be found in the following files:
-
-- [Character](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/Character.java)
-- [JumpAbilityState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/JumpAbilityState.java)
-- [DoubleJumpState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/DoubleJumpState.java)
-- [HelicopterState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/HelicopterState.java)
-- [IncreasedGravityState](https://web.fe.up.pt/~arestivo/page/courses/2021/lpoo/template/src/main/java/IncreasedGravityState.java)
-
-**Consequences**
-
-The use of the State Pattern in the current design allows the following benefits:
-
-- The several states that represent the character’s hability to jump become explicit in the code, instead of relying on a series of flags.
-- We don’t need to have a long set of conditional if or switch statements associated with the various states; instead, polimorphism is used to activate the right behavior.
-- There are now more classes and instances to manage, but still in a reasonable number.
-
-#### KNOWN CODE SMELLS
-
-> This section should describe 3 to 5 different code smells that you have identified in your current implementation.
+### KNOWN CODE SMELLS
 
 ### TESTING
 
-- Screenshot of coverage report.
-- Link to mutation testing report.
-
 ### SELF-EVALUATION
-
-> In this section describe how the work regarding the project was divided between the students. In the event that members of the group do not agree on a work distribution, the group should send an email to the teacher explaining the disagreement.
-
-**Example**:
-
-- John Doe: 40%
-- Jane Doe: 60%
