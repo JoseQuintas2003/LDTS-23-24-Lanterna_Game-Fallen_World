@@ -51,10 +51,14 @@ public class Game {
             if (keyboardAction == org.example.gui.GUI.GUI_ACTION.RIGHT) {
                 System.out.println("RIGHT");
             }
+            if (keyboardAction == org.example.gui.GUI.GUI_ACTION.FIRE) {
+                System.out.println("FIRE");
+            }
             if (keyboardAction == org.example.gui.GUI.GUI_ACTION.QUIT) {
                 System.out.println("QUIT");
                 break;
             }
         }
+        game.getGUI().close();
     }
 }
