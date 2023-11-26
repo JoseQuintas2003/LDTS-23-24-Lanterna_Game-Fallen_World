@@ -3,7 +3,7 @@
 > In this 2D shooter game, you can help your character survive the zombie apocalypse by shooting all the zombies that 
 > come your way. You can also collect coins and power-ups to help you in your quest.
 > 
->This project was developed by *José Nuno Quintas (up202108712@up.pt)* and *Adicionar nome aqui (up20XXXXXXX@up.pt) for LDTS 2023/2024*
+>This project was developed by *José Nuno Quintas (up202108712@up.pt)* and *Filipe Alves Afonso (up202205420@up.pt)* for LDTS 2023/2024
 
 **Example**:
 
