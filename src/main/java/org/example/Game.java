@@ -8,6 +8,9 @@ import com.googlecode.lanterna.terminal.Terminal;
 import org.example.gui.LanternaGUI;
 import org.example.gui.GUI;
 import org.example.model.Position;
+import org.example.model.arena.Arena;
+import org.example.model.arena.RandomArenaBuilder;
+import org.example.model.entities.Wall;
 
 import java.awt.*;
 import java.io.IOException;
@@ -24,12 +27,19 @@ public class Game {
     public LanternaGUI getGUI(){
         return this.GUI;
     }
+
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException{
         Game game = new Game();
 
-        //As linhas abaixo são de caracter puramente ilustrativo, para mostrar que o código está a funcionar
+        //As linhas abaixo são de caracter puramente ilustrativo, para mostrar que o código está a funcionar e devem ser removidas no futuro
 
-        game.getGUI().drawWall(new Position(10, 10));
+        RandomArenaBuilder builder = new RandomArenaBuilder(40, 40);
+        Arena arena = builder.createArena();
+
+        for (Wall wall : arena.getWallList()) {
+            game.getGUI().drawWall(wall.getPosition());
+        }
+
         game.getGUI().drawHero(new Position(15, 10));
         game.getGUI().drawEnemy(new Position(20, 10));
         game.getGUI().drawNPC(new Position(25, 10));
