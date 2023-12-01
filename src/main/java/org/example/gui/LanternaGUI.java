@@ -108,30 +108,29 @@ public class LanternaGUI implements GUI{
     }
     */
 
-    private void drawCharacter(int x, int y, char c, String color) throws IOException {
+    private void drawCharacter(int x, int y, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString(color));
         tg.putString(x, y + 1, "" + c);
-        refresh();
     }
 
     @Override
-    public void drawHero(Position position) throws IOException {
+    public void drawHero(Position position) {
         drawCharacter(position.getX(), position.getY(), 'H', "#FFD700");
     }
 
     @Override
-    public void drawWall(Position position) throws IOException {
+    public void drawWall(Position position) {
         drawCharacter(position.getX(), position.getY(), '#', "#3333FF");
     }
 
     @Override
-    public void drawEnemy(Position position) throws IOException {
+    public void drawEnemy(Position position) {
         drawCharacter(position.getX(), position.getY(), '!', "#D32500");
     }
 
     @Override
-    public void drawNPC(Position position) throws IOException {
+    public void drawNPC(Position position) {
         drawCharacter(position.getX(), position.getY(), '?', "#17BD00");
     }
 

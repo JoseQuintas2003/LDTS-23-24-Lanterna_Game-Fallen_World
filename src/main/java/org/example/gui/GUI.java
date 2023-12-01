@@ -11,13 +11,13 @@ public interface GUI {
 
     //GUI_ACTION getMouseAction() throws IOException;
 
-    void drawHero(Position position) throws IOException;
+    void drawHero(Position position);
 
-    void drawWall(Position position) throws IOException;
+    void drawWall(Position position);
 
-    void drawEnemy(Position position) throws IOException;
+    void drawEnemy(Position position);
 
-    void drawNPC(Position position) throws IOException;
+    void drawNPC(Position position);
 
     void clear();
 
