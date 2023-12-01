@@ -94,6 +94,9 @@ public class Arena {
     //Other Methods
 
     public boolean isEnemy(Position position) {
+        if (enemiesList == null)
+            return false;
+
         for (Enemy enemy : enemiesList)
             if (enemy.getPosition().equals(position))
                 return true;
@@ -101,6 +104,9 @@ public class Arena {
     }
 
     public boolean isNPC(Position position) {
+        if (NPCsList == null)
+            return false;
+
         for (NPC npc : NPCsList)
             if (npc.getPosition().equals(position))
                 return true;

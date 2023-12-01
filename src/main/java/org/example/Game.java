@@ -10,7 +10,10 @@ import org.example.gui.GUI;
 import org.example.model.Position;
 import org.example.model.arena.Arena;
 import org.example.model.arena.RandomArenaBuilder;
+import org.example.model.entities.Player;
 import org.example.model.entities.Wall;
+import org.example.states.GameState;
+import org.example.states.State;
 
 import java.awt.*;
 import java.io.IOException;
@@ -20,29 +23,44 @@ import java.util.ArrayList;
 public class Game {
     private final LanternaGUI GUI;
 
+    private State state;
+
     public Game() throws IOException, FontFormatException, URISyntaxException {
         this.GUI = new LanternaGUI(40, 40);
+        this.state = new GameState(new RandomArenaBuilder(100, 100).createArena());
     }
 
     public LanternaGUI getGUI(){
         return this.GUI;
     }
 
+    private void start() throws IOException {
+        int FPS = 10;
+        int frameTime = 1000 / FPS;
+
+        while (this.state != null) {
+            long startTime = System.currentTimeMillis();
+
+            state.step(this, GUI, startTime);
+
+            long elapsedTime = System.currentTimeMillis() - startTime;
+            long sleepTime = frameTime - elapsedTime;
+
+            try {
+                if (sleepTime > 0) Thread.sleep(sleepTime);
+            } catch (InterruptedException e) {
+            }
+        }
+
+        GUI.close();
+    }
+
     public static void main(String[] args) throws IOException, FontFormatException, URISyntaxException{
         Game game = new Game();
 
+        game.start();
+
         //As linhas abaixo são de caracter puramente ilustrativo, para mostrar que o código está a funcionar e devem ser removidas no futuro
-
-        RandomArenaBuilder builder = new RandomArenaBuilder(40, 40);
-        Arena arena = builder.createArena();
-
-        for (Wall wall : arena.getWallList()) {
-            game.getGUI().drawWall(wall.getPosition());
-        }
-
-        game.getGUI().drawHero(new Position(15, 10));
-        game.getGUI().drawEnemy(new Position(20, 10));
-        game.getGUI().drawNPC(new Position(25, 10));
 
         org.example.gui.GUI.GUI_ACTION keyboardAction;
 
