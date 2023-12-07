@@ -29,54 +29,61 @@ public class Entity {
     public void setPosition(Position position) {
         this.position = position;
     }
-    public void moveToPosition(Position position, int speed) {
+
+    /**
+     * Calculates the Position where the entity should go next in order to reach the parameter position
+     * @param position Intended Position
+     * @param speed Speed of the entity
+     */
+    public Position calculatePosition(Position position, int speed) {
 
         switch (this.position.getQuadrant(position)) {
             case TOP_RIGHT:
-                while (!this.position.equals(position)) {
+                if (!this.position.equals(position)) {
                     if (this.position.getX() < position.getX()) {
-                        setPosition(new Position(this.position.getX() + speed, this.position.getY()));
+                        return new Position(this.position.getX() + speed, this.position.getY());
                     }
 
                     if (this.position.getY() < position.getY()) {
-                        setPosition(new Position(this.position.getX(), this.position.getY() + speed));
+                        return new Position(this.position.getX(), this.position.getY() + speed);
                     }
                 }
                 break;
             case TOP_LEFT:
-                while (!this.position.equals(position)) {
+                if (!this.position.equals(position)) {
                     if (this.position.getX() > position.getX()) {
-                        setPosition(new Position(this.position.getX() - speed, this.position.getY()));
+                        return new Position(this.position.getX() - speed, this.position.getY());
                     }
 
                     if (this.position.getY() < position.getY()) {
-                        setPosition(new Position(this.position.getX(), this.position.getY() + speed));
+                        return new Position(this.position.getX(), this.position.getY() + speed);
                     }
                 }
                 break;
             case BOTTOM_RIGHT:
-                while (!this.position.equals(position)) {
+                if (!this.position.equals(position)) {
                     if (this.position.getX() < position.getX()) {
-                        setPosition(new Position(this.position.getX() + speed, this.position.getY()));
+                        return new Position(this.position.getX() + speed, this.position.getY());
                     }
 
                     if (this.position.getY() > position.getY()) {
-                       setPosition(new Position(this.position.getX(), this.position.getY() - speed));
+                       return new Position(this.position.getX(), this.position.getY() - speed);
                     }
                 }
                 break;
 
             case BOTTOM_LEFT:
-                while (!this.position.equals(position)) {
+                if (!this.position.equals(position) ) {
                     if (this.position.getX() > position.getX()) {
-                        setPosition(new Position(this.position.getX() - speed, this.position.getY()));
+                        return new Position(this.position.getX() - speed, this.position.getY());
                     }
 
                     if (this.position.getY() > position.getY()) {
-                        setPosition(new Position(this.position.getX(), this.position.getY() - speed));
+                        return new Position(this.position.getX(), this.position.getY() - speed);
                     }
                 }
                 break;
         }
+        return this.position;
     }
 }

@@ -9,13 +9,16 @@ import org.example.model.arena.Arena;
 import java.io.IOException;
 
 public class PlayerController extends GameController {
+
+    private long timeLastMovement;
     public PlayerController(Arena arena) {
         super(arena);
+        this.timeLastMovement = 0;
     }
 
     public void movePlayer(Position position) {
-        if (getModel().isEmpty(position)){
-            getModel().getPlayer().moveToPosition(position, getModel().getPlayer().SPEED);
+        if (getModel().isEmpty(position)) {
+            getModel().getPlayer().setPosition(position);
         }
     }
 
@@ -49,10 +52,14 @@ public class PlayerController extends GameController {
 
     @Override
     public void step(Game game, GUI.GUI_ACTION action, long time) throws IOException {
-        if (action == GUI.GUI_ACTION.UP) movePlayerUp();
-        if (action == GUI.GUI_ACTION.RIGHT) movePlayerRight();
-        if (action == GUI.GUI_ACTION.DOWN) movePlayerDown();
-        if (action == GUI.GUI_ACTION.LEFT) movePlayerLeft();
-        if (action == GUI.GUI_ACTION.QUIT) game.getGUI().close();
+        if (time - timeLastMovement > 100) {
+            if (action == GUI.GUI_ACTION.UP) movePlayerUp();
+            if (action == GUI.GUI_ACTION.RIGHT) movePlayerRight();
+            if (action == GUI.GUI_ACTION.DOWN) movePlayerDown();
+            if (action == GUI.GUI_ACTION.LEFT) movePlayerLeft();
+            if (action == GUI.GUI_ACTION.QUIT) game.getGUI().close();
+
+            this.timeLastMovement = time;
+        }
     }
 }

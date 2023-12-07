@@ -31,7 +31,7 @@ public class Player extends Entity {
         return this.score;
     }
 
-    public void moveToPosition(Position position) {
-        super.moveToPosition(position, SPEED);
+    public void calculatePosition(Position position) {
+        super.calculatePosition(position, SPEED);
     }
 }
