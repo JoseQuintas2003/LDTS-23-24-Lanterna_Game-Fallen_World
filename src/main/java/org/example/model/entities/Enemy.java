@@ -5,7 +5,7 @@ public class Enemy extends Entity{
 
     public boolean detectedPlayer = false;
 
-    private int detectionRadius = 3;
+    private int detectionRadius = 5;
 
     public Enemy(int x, int y, int health) {
         super(x, y, true, true, false);
