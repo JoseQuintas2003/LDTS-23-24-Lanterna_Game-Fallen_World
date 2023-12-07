@@ -26,14 +26,15 @@ public class Game {
     private State state;
 
     public Game() throws IOException, FontFormatException, URISyntaxException {
-        this.GUI = new LanternaGUI(40, 40);
-        this.state = new GameState(new RandomArenaBuilder(100, 100).createArena());
+        this.GUI = new LanternaGUI(50, 50);
+        this.state = new GameState(new RandomArenaBuilder(50, 50).createArena());
     }
 
     public LanternaGUI getGUI(){
         return this.GUI;
     }
 
+    //To change later
     private void start() throws IOException {
         int FPS = 10;
         int frameTime = 1000 / FPS;

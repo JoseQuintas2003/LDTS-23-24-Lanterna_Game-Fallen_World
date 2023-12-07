@@ -73,6 +73,13 @@ public class Position {
         return null;
     }
 
+    public boolean isNear(Position position, int radius){
+        int xDif = Math.abs(this.x - position.getX());
+        int yDif = Math.abs(this.y - position.getY());
+
+        return (xDif <= radius && yDif <= radius);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true; // 14

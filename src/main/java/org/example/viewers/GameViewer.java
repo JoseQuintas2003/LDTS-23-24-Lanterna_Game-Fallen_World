@@ -3,6 +3,7 @@ package org.example.viewers;
 import org.example.gui.GUI;
 import org.example.model.arena.Arena;
 import org.example.model.entities.Entity;
+import org.example.viewers.entities.EnemyViewer;
 import org.example.viewers.entities.EntityViewer;
 import org.example.viewers.entities.PlayerViewer;
 import org.example.viewers.entities.WallViewer;
@@ -17,7 +18,7 @@ public class GameViewer extends Viewer<Arena> {
     @Override
     protected void drawEntities(GUI gui) {
         drawEntities(gui, getModel().getWallList(), new WallViewer());
-        //drawEntities(gui, getModel().getEnemiesList(), new EnemyViewer());
+        drawEntities(gui, getModel().getEnemiesList(), new EnemyViewer());
         drawEntity(gui, getModel().getPlayer(), new PlayerViewer());
     }
 

@@ -37,7 +37,14 @@ public class RandomArenaBuilder extends ArenaBuilder{
 
     @Override
     protected List<Enemy> createEnemies() {
-        return null;
+
+        List<Enemy> enemies = new ArrayList<>();
+
+        for (int i = 0; i < 3; i++) {
+            enemies.add(new Enemy(i * 11, i * 9 + 1, 100));
+        }
+
+        return enemies;
     }
 
     @Override

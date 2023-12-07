@@ -47,31 +47,12 @@ public class PlayerController extends GameController {
         movePlayer(new Position(newX, newY));
     }
 
-    public void stayInPlace() {
-        movePlayer(getModel().getPlayer().getPosition());
-    }
-
     @Override
     public void step(Game game, GUI.GUI_ACTION action, long time) throws IOException {
-        switch (action) {
-            case UP:
-                movePlayerUp();
-                break;
-            case DOWN:
-                movePlayerDown();
-                break;
-            case LEFT:
-                movePlayerLeft();
-                break;
-            case RIGHT:
-                movePlayerRight();
-                break;
-            case NONE:
-                stayInPlace();
-                break;
-            case QUIT:
-                game.getGUI().close();
-                break;
-        }
+        if (action == GUI.GUI_ACTION.UP) movePlayerUp();
+        if (action == GUI.GUI_ACTION.RIGHT) movePlayerRight();
+        if (action == GUI.GUI_ACTION.DOWN) movePlayerDown();
+        if (action == GUI.GUI_ACTION.LEFT) movePlayerLeft();
+        if (action == GUI.GUI_ACTION.QUIT) game.getGUI().close();
     }
 }

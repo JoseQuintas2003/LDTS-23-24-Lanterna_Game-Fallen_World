@@ -1,6 +1,7 @@
 package org.example.controllers;
 
 import org.example.Game;
+import org.example.controllers.entity.EnemyController;
 import org.example.controllers.entity.PlayerController;
 import org.example.gui.GUI;
 import org.example.model.arena.Arena;
@@ -11,12 +12,12 @@ public class ArenaController extends Controller<Arena>{
 
     private final PlayerController playerController;
 
-    //private final EnemyController enemyController;
+    private final EnemyController enemyController;
 
     public ArenaController(Arena arena) {
         super(arena);
         this.playerController = new PlayerController(arena);
-        //this.enemyController = new EnemyController(arena);
+        this.enemyController = new EnemyController(arena);
     }
 
     @Override
@@ -25,7 +26,7 @@ public class ArenaController extends Controller<Arena>{
             game.getGUI().close();
         else {
             playerController.step(game, action, time);
-            //enemyController.step(game, action, time);
+            enemyController.step(game, action, time);
         }
     }
 }

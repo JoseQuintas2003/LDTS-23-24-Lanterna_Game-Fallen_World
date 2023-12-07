@@ -11,7 +11,7 @@ public abstract class  ArenaBuilder {
         Arena arena = new Arena(getWidth(), getHeight());
 
         arena.setPlayer(createPlayer());
-        //arena.addEnemy(createEnemies());
+        arena.setEnemyList(createEnemies());
         arena.setWallList(createWalls());
 
         return arena;

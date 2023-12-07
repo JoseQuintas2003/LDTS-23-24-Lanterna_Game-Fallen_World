@@ -51,8 +51,8 @@ public class Arena {
 
     public void addEnemy(Enemy enemy) { this.enemiesList.add(enemy); }
 
-    public void addEnemy(List<Enemy> enemies) {
-        this.enemiesList.addAll(enemies);
+    public void setEnemyList(List<Enemy> enemies) {
+        this.enemiesList = enemies;
     }
 
     public void removeEnemy(Enemy enemy) {
