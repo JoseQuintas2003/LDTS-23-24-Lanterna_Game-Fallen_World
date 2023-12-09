@@ -40,7 +40,7 @@ public class RandomArenaBuilder extends ArenaBuilder{
 
         List<Enemy> enemies = new ArrayList<>();
 
-        for (int i = 0; i < 3; i++) {
+        for (int i = 1; i < 4; i++) {
             enemies.add(new Enemy(i * 11, i * 9 + 1, 100));
         }
 
@@ -52,11 +52,11 @@ public class RandomArenaBuilder extends ArenaBuilder{
         List<Wall> walls = new ArrayList<>();
 
         for (int i = 0; i < width; i++) {
-            walls.add(new Wall(i, 0));
+            walls.add(new Wall(i, 2));
             walls.add(new Wall(i, height - 1));
         }
 
-        for (int i = 0; i < height; i++) {
+        for (int i = 2; i < height; i++) {
             walls.add(new Wall(0, i));
             walls.add(new Wall(width - 1, i));
         }

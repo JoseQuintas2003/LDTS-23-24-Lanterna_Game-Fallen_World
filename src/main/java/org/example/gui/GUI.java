@@ -13,6 +13,8 @@ public interface GUI {
 
     void drawHero(Position position);
 
+    void drawHeroHealth(Position position, int health);
+
     void drawWall(Position position);
 
     void drawEnemy(Position position);

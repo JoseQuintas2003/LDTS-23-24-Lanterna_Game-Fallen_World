@@ -119,6 +119,14 @@ public class LanternaGUI implements GUI{
         drawCharacter(position.getX(), position.getY(), 'H', "#FFD700");
     }
 
+    public void drawHeroHealth(Position position, int health) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
+        tg.putString(position.getX(), position.getY() + 1, "HP");
+        tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
+        tg.putString(position.getX() + 2, position.getY() + 1, ":" + health);
+    }
+
     @Override
     public void drawWall(Position position) {
         drawCharacter(position.getX(), position.getY(), '#', "#3333FF");
