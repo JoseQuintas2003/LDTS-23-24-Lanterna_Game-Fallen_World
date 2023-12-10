@@ -3,13 +3,14 @@ package org.example.model.entities;
 public class Enemy extends Entity{
     private int health; //Talvez mude para float
 
-    public boolean detectedPlayer = false;
+    public boolean detectedPlayer;
 
     private int detectionRadius = 5;
 
     public Enemy(int x, int y, int health) {
         super(x, y, true, true, false);
         this.health = health;
+        this.detectedPlayer = false;
     }
 
     public void setDetectionRadius(int detectionRadius) {

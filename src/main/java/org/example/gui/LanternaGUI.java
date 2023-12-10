@@ -143,6 +143,11 @@ public class LanternaGUI implements GUI{
     }
 
     @Override
+    public void drawProjectile(Position position) {
+        drawCharacter(position.getX(), position.getY(), '*', "#D32500");
+    }
+
+    @Override
     public void clear() {
         screen.clear();
     }

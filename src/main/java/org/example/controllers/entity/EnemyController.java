@@ -7,8 +7,11 @@ import org.example.model.Position;
 import org.example.model.arena.Arena;
 import org.example.model.entities.Enemy;
 import org.example.model.entities.Player;
+import org.example.model.entities.Projectile;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class EnemyController extends GameController{
 
@@ -22,6 +25,31 @@ public class EnemyController extends GameController{
         Position playerPos = getModel().getPlayer().getPosition();
 
         return enemy.getPosition().isNear(playerPos, enemy.getDetectionRadius());
+    }
+
+    public void damageEnemies() {
+        for (Enemy enemy : getModel().getEnemiesList()) {
+            for (Projectile projectile : getModel().getProjectileList()) {
+                if (enemy.getPosition().isNear(projectile.getPosition(), 1)) {
+                    enemy.decreaseHealth(projectile.getDamage());
+                    System.out.printf("Enemy Health: %d\n", enemy.getHealth());
+                }
+            }
+        }
+    }
+
+    public void removeDeadEnemies() {
+        List<Enemy> enemiesToRemove = new ArrayList<>();
+
+        for (Enemy enemy : getModel().getEnemiesList()) {
+            if (enemy.getHealth() <= 0) {
+                enemiesToRemove.add(enemy);
+            }
+        }
+
+        for (Enemy enemy : enemiesToRemove) {
+            getModel().removeEnemy(enemy);
+        }
     }
 
     public void moveEnemy(Enemy enemy, Position position) {
@@ -44,11 +72,11 @@ public class EnemyController extends GameController{
     public void step(Game game, GUI.GUI_ACTION action, long time) throws IOException {
         if (time - timeLastMovement > 500) {
             for (Enemy enemy : getModel().getEnemiesList()){
+
+                //Enemy Detection of Player and Movement
                 enemy.detectedPlayer = detectsPlayer(enemy);
 
-                if (enemy.detectedPlayer){
-
-                    System.out.println("Enemy detected player!");
+                if (enemy.detectedPlayer) {
 
                     Position playerPos = getModel().getPlayer().getPosition();
 
@@ -56,8 +84,20 @@ public class EnemyController extends GameController{
 
                     damagePlayer(enemy, 5); //mudar valor de dano
                 }
+                else {
+                    Position enemyPos = enemy.getPosition();
+
+                    int randomX = (int) (Math.random() * 3) - 1;
+                    int randomY = (int) (Math.random() * 3) - 1;
+
+                    Position newPosition = new Position(enemyPos.getX() + randomX, enemyPos.getY() + randomY);
+
+                    moveEnemy(enemy, newPosition);
+                }
             }
             this.timeLastMovement = time;
         }
+        damageEnemies();
+        removeDeadEnemies();
     }
 }

@@ -40,6 +40,10 @@ public class Game {
         int frameTime = 1000 / FPS;
 
         while (this.state != null) {
+            //Temporary code
+
+            //End of temporary code
+
             long startTime = System.currentTimeMillis();
 
             state.step(this, GUI, startTime);

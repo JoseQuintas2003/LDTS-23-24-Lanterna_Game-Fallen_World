@@ -3,6 +3,7 @@ package org.example.controllers;
 import org.example.Game;
 import org.example.controllers.entity.EnemyController;
 import org.example.controllers.entity.PlayerController;
+import org.example.controllers.entity.ProjectileController;
 import org.example.gui.GUI;
 import org.example.model.arena.Arena;
 
@@ -14,10 +15,13 @@ public class ArenaController extends Controller<Arena>{
 
     private final EnemyController enemyController;
 
+    private final ProjectileController projectileController;
+
     public ArenaController(Arena arena) {
         super(arena);
         this.playerController = new PlayerController(arena);
         this.enemyController = new EnemyController(arena);
+        this.projectileController = new ProjectileController(arena);
     }
 
     @Override
@@ -27,6 +31,7 @@ public class ArenaController extends Controller<Arena>{
         else {
             playerController.step(game, action, time);
             enemyController.step(game, action, time);
+            projectileController.step(game, action, time);
         }
     }
 }

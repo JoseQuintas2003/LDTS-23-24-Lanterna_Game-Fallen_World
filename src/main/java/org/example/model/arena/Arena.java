@@ -8,6 +8,7 @@ import org.example.model.entities.Wall;
 import org.example.model.entities.Projectile;
 import org.example.model.arena.Arena;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Arena {
@@ -24,6 +25,7 @@ public class Arena {
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
+        this.projectileList = new ArrayList<Projectile>();
     }
 
     //Getter Methods
@@ -89,6 +91,10 @@ public class Arena {
 
     public void removeProjectile(Projectile projectile) {
         this.projectileList.remove(projectile);
+    }
+
+    public int countProjectiles() {
+        return this.projectileList.size();
     }
 
     //Other Methods

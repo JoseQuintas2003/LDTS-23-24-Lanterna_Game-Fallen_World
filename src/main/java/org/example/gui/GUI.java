@@ -27,6 +27,8 @@ public interface GUI {
 
     void close() throws IOException;
 
+    void drawProjectile(Position position);
+
     enum GUI_ACTION {
         UP,
         RIGHT,
