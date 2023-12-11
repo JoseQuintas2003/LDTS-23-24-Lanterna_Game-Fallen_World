@@ -14,6 +14,7 @@ public interface GUI {
     void drawHero(Position position);
 
     void drawHeroHealth(Position position, int health);
+    void drawHeroScore(Position position, int score);
 
     void drawWall(Position position);
 

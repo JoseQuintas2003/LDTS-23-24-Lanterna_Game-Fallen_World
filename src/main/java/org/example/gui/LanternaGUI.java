@@ -119,12 +119,22 @@ public class LanternaGUI implements GUI{
         drawCharacter(position.getX(), position.getY(), 'H', "#FFD700");
     }
 
+    @Override
     public void drawHeroHealth(Position position, int health) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
         tg.putString(position.getX(), position.getY() + 1, "HP");
         tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
         tg.putString(position.getX() + 2, position.getY() + 1, ":" + health);
+    }
+
+    @Override
+    public void drawHeroScore(Position position, int score) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
+        tg.putString(position.getX(), position.getY() + 2, "Score");
+        tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
+        tg.putString(position.getX() + 2, position.getY() + 2, ":" + score);
     }
 
     @Override

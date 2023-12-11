@@ -9,5 +9,6 @@ public class PlayerViewer implements EntityViewer<Player> {
     public void draw(Player player, GUI gui) {
         gui.drawHero(player.getPosition());
         gui.drawHeroHealth(new Position(0,0), player.getHealth());
+        gui.drawHeroScore(new Position(0,1), player.getScore());
     }
 }

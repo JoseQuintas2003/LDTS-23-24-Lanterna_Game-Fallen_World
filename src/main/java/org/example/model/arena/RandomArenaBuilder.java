@@ -52,11 +52,11 @@ public class RandomArenaBuilder extends ArenaBuilder{
         List<Wall> walls = new ArrayList<>();
 
         for (int i = 0; i < width; i++) {
-            walls.add(new Wall(i, 2));
+            walls.add(new Wall(i, 3));
             walls.add(new Wall(i, height - 1));
         }
 
-        for (int i = 2; i < height; i++) {
+        for (int i = 3; i < height; i++) {
             walls.add(new Wall(0, i));
             walls.add(new Wall(width - 1, i));
         }
