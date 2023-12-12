@@ -30,7 +30,7 @@ public class EnemyController extends GameController{
     public void damageEnemies() {
         for (Enemy enemy : getModel().getEnemiesList()) {
             for (Projectile projectile : getModel().getProjectileList()) {
-                if (enemy.getPosition().isNear(projectile.getPosition(), 1)) {
+                if (enemy.projectileHits(projectile.getPosition(), projectile.getFinalPosition())) {
                     enemy.decreaseHealth(projectile.getDamage());
                     System.out.printf("Enemy Health: %d\n", enemy.getHealth());
                 }
@@ -49,6 +49,7 @@ public class EnemyController extends GameController{
 
         for (Enemy enemy : enemiesToRemove) {
             getModel().removeEnemy(enemy);
+            getModel().getPlayer().increaseScore(10);
         }
     }
 

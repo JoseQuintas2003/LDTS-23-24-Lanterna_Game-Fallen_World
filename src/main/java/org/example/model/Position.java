@@ -75,6 +75,7 @@ public class Position {
 
     public boolean isNear(Position position, int radius){
         int xDif = Math.abs(this.x - position.getX());
+
         int yDif = Math.abs(this.y - position.getY());
 
         return (xDif <= radius && yDif <= radius);
