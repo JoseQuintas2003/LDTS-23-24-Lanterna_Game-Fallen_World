@@ -18,10 +18,13 @@ public class ProjectileController extends GameController {
 
     private int maxProjectiles;
 
+    Boolean canMove = true;
+
     public ProjectileController(Arena arena) {
         super(arena);
         this.lastMovement = GUI.GUI_ACTION.DOWN;
         this.maxProjectiles = 1;
+        this.timeLastMovement = 0;
     }
 
     public void setLastMovement(GUI.GUI_ACTION action) {
@@ -71,18 +74,22 @@ public class ProjectileController extends GameController {
             createProjectile(lastMovement);
         }
 
-        timeLastMovement = time;
-
         for (Projectile projectile : getModel().getProjectileList()) {
             if (projectile.getPosition().equals(projectile.getFinalPosition())) {
                 projectileToRemove.add(projectile);
-            } else {
+            } else if (time - timeLastMovement > game.FPS / 10){
+                canMove = false;
                 Position nextPosition = projectile.calculatePosition(projectile.getFinalPosition(), 1);
 
                 if (!getModel().isEmpty(nextPosition)) projectileToRemove.add(projectile);
                 else projectile.setPosition(nextPosition);
             }
         }
+        if (!canMove) {
+            timeLastMovement = time;
+            canMove = true;
+        }
+
 
         for (Projectile projectile : projectileToRemove) {
             getModel().removeProjectile(projectile);

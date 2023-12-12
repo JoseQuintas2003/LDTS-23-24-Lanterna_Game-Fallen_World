@@ -11,9 +11,12 @@ import java.io.IOException;
 public class PlayerController extends GameController {
 
     private long timeLastMovement;
+
+    private GUI.GUI_ACTION lastAction;
     public PlayerController(Arena arena) {
         super(arena);
         this.timeLastMovement = 0;
+        this.lastAction = GUI.GUI_ACTION.NONE;
     }
 
     public void movePlayer(Position position) {
@@ -52,13 +55,38 @@ public class PlayerController extends GameController {
 
     @Override
     public void step(Game game, GUI.GUI_ACTION action, long time) throws IOException {
-        if (time - timeLastMovement > 100) {
-            if (action == GUI.GUI_ACTION.UP) movePlayerUp();
-            if (action == GUI.GUI_ACTION.RIGHT) movePlayerRight();
-            if (action == GUI.GUI_ACTION.DOWN) movePlayerDown();
-            if (action == GUI.GUI_ACTION.LEFT) movePlayerLeft();
-            if (action == GUI.GUI_ACTION.QUIT) game.getGUI().close();
-
+        if (time - timeLastMovement < game.FPS /* / getModel().getPlayer().getSpeedModifier()*/) {
+            switch (action) {
+                case UP -> {
+                    this.lastAction = GUI.GUI_ACTION.UP;
+                }
+                case DOWN -> {
+                    this.lastAction = GUI.GUI_ACTION.DOWN;
+                }
+                case LEFT -> {
+                    this.lastAction = GUI.GUI_ACTION.LEFT;
+                }
+                case RIGHT -> {
+                    this.lastAction = GUI.GUI_ACTION.RIGHT;
+                }
+            }
+        }
+        else {
+            switch (this.lastAction) {
+                case UP -> {
+                    movePlayerUp();
+                }
+                case DOWN -> {
+                    movePlayerDown();
+                }
+                case LEFT -> {
+                    movePlayerLeft();
+                }
+                case RIGHT -> {
+                    movePlayerRight();
+                }
+            }
+            this.lastAction = GUI.GUI_ACTION.NONE;
             this.timeLastMovement = time;
         }
     }

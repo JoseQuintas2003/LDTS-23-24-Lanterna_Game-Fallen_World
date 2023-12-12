@@ -23,6 +23,8 @@ import java.util.ArrayList;
 public class Game {
     private final LanternaGUI GUI;
 
+    public final int FPS = 200;
+
     private State state;
 
     public Game() throws IOException, FontFormatException, URISyntaxException {
@@ -36,7 +38,6 @@ public class Game {
 
     //To change later
     private void start() throws IOException {
-        int FPS = 60;
         int frameTime = 1000 / FPS;
 
         while (this.state != null) {

@@ -134,7 +134,7 @@ public class LanternaGUI implements GUI{
         tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
         tg.putString(position.getX(), position.getY() + 2, "Score");
         tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
-        tg.putString(position.getX() + 2, position.getY() + 2, ":" + score);
+        tg.putString(position.getX() + 5, position.getY() + 2, ":" + score);
     }
 
     @Override
