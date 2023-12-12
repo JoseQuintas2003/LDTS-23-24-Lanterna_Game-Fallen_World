@@ -74,10 +74,10 @@ public class LanternaGUI implements GUI{
         if (keyStroke == null) return GUI_ACTION.NONE;
 
         return switch (keyStroke.getKeyType()) {
-            case ArrowUp -> GUI_ACTION.UP;
-            case ArrowDown -> GUI_ACTION.DOWN;
-            case ArrowLeft -> GUI_ACTION.LEFT;
-            case ArrowRight -> GUI_ACTION.RIGHT;
+            case ArrowUp -> GUI_ACTION.ARROW_UP;
+            case ArrowDown -> GUI_ACTION.ARROW_DOWN;
+            case ArrowLeft -> GUI_ACTION.ARROW_LEFT;
+            case ArrowRight -> GUI_ACTION.ARROW_RIGHT;
 
             case Character -> switch (keyStroke.getCharacter()) {
                 case 'q' -> GUI_ACTION.QUIT;

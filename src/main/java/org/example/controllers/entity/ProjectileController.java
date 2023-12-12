@@ -22,15 +22,17 @@ public class ProjectileController extends GameController {
 
     public ProjectileController(Arena arena) {
         super(arena);
-        this.lastMovement = GUI.GUI_ACTION.DOWN;
+        this.lastMovement = GUI.GUI_ACTION.ARROW_DOWN;
         this.maxProjectiles = 1;
         this.timeLastMovement = 0;
     }
 
-    public void setLastMovement(GUI.GUI_ACTION action) {
-        if (action == GUI.GUI_ACTION.UP || action == GUI.GUI_ACTION.DOWN || action == GUI.GUI_ACTION.LEFT || action == GUI.GUI_ACTION.RIGHT) {
+    public boolean setLastMovement(GUI.GUI_ACTION action) {
+        if (action == GUI.GUI_ACTION.ARROW_UP || action == GUI.GUI_ACTION.ARROW_DOWN || action == GUI.GUI_ACTION.ARROW_LEFT || action == GUI.GUI_ACTION.ARROW_RIGHT) {
             this.lastMovement = action;
+            return true;
         }
+        return false;
     }
 
     public void setMaxProjectiles(int maxProjectiles) {
@@ -44,19 +46,19 @@ public class ProjectileController extends GameController {
         //Add damage specification here after multiple weapons are implemented
 
         switch (action) {
-            case UP -> {
+            case ARROW_UP -> {
                 Projectile projectile = new Projectile(playerPosX, playerPosY - 1, 5, new Position(playerPosX, playerPosY - 25));
                 getModel().addProjectile(projectile);
             }
-            case DOWN -> {
+            case ARROW_DOWN -> {
                 Projectile projectile = new Projectile(playerPosX, playerPosY + 1, 5, new Position(playerPosX, playerPosY + 25));
                 getModel().addProjectile(projectile);
             }
-            case LEFT -> {
+            case ARROW_LEFT -> {
                 Projectile projectile = new Projectile(playerPosX - 1, playerPosY, 5, new Position(playerPosX - 25, playerPosY));
                 getModel().addProjectile(projectile);
             }
-            case RIGHT -> {
+            case ARROW_RIGHT -> {
                 Projectile projectile = new Projectile(playerPosX + 1, playerPosY, 5, new Position(playerPosX + 25, playerPosY));
                 getModel().addProjectile(projectile);
             }
@@ -68,9 +70,7 @@ public class ProjectileController extends GameController {
     public void step(Game game, GUI.GUI_ACTION action, long time){
         List<Projectile> projectileToRemove = new ArrayList<>();
 
-        setLastMovement(action);
-
-        if (action == GUI.GUI_ACTION.FIRE && getModel().countProjectiles() < this.maxProjectiles) {
+        if (setLastMovement(action) && getModel().countProjectiles() < this.maxProjectiles) {
             createProjectile(lastMovement);
         }
 

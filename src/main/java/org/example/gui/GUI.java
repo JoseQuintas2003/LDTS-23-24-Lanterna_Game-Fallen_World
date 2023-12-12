@@ -38,6 +38,10 @@ public interface GUI {
         NONE,
         FIRE,
         QUIT,
+        ARROW_LEFT,
+        ARROW_RIGHT,
+        ARROW_DOWN,
+        ARROW_UP
         //To be expanded later
     }
 
