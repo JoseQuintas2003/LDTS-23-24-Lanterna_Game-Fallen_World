@@ -35,6 +35,8 @@ public interface GUI {
 
     void drawHealthBoost(Position position);
 
+    void drawSpeedBoost(Position position);
+
     enum GUI_ACTION {
         UP,
         RIGHT,

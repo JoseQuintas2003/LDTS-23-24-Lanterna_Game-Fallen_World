@@ -9,6 +9,8 @@ import org.example.model.arena.Arena;
 import org.example.model.entities.powerups.HealthBoost;
 import org.example.model.entities.powerups.HealthRegen;
 import org.example.model.entities.powerups.Powerup;
+import org.example.model.entities.powerups.SpeedBoost;
+
 import java.io.IOException;
 
 import java.util.ArrayList;
@@ -33,10 +35,11 @@ public class PowerupController extends GameController {
     public void createPowerup(int x, int y) {
 
         //Randomize type of powerup
-        int random = (int) (Math.random() * 2);
+        int random = (int) (Math.random() * 3);
 
         if ((random == 0) && (getModel().getPlayer().getMaxHealth() < 200)) getModel().addPowerup(new HealthBoost(x, y));
-        if (random == 1) getModel().addPowerup(new HealthRegen(x, y));
+        if ((random == 1) && (getModel().getPlayer().SPEED <= 3)) getModel().addPowerup(new SpeedBoost(x, y));
+        if (random == 2) getModel().addPowerup(new HealthRegen(x, y));
     }
 
     @Override

@@ -8,7 +8,7 @@ public class Player extends Entity {
     private int maxHealth;
     private int score;
 
-    public final int SPEED = 1;
+    public int SPEED = 1;
 
     public Player(int x, int y, int health, int score) {
         //The three boolean values are: isCollidable, isDestroyable, isStationary
