@@ -10,7 +10,7 @@ public class HealthRegen extends Powerup{
 
     @Override
     public void applyPowerup(Player player) {
-        int healthRegen = 100 - player.getHealth();
+        int healthRegen = player.getMaxHealth() - player.getHealth();
         player.increaseHealth(healthRegen);
     }
 }

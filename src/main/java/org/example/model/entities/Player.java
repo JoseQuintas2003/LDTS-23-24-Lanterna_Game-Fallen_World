@@ -4,6 +4,8 @@ import org.example.model.Position;
 
 public class Player extends Entity {
     private int health;
+
+    private int maxHealth;
     private int score;
 
     public final int SPEED = 1;
@@ -13,6 +15,7 @@ public class Player extends Entity {
         super(x, y, true, true, false);
         this.health = health;
         this.score = score;
+        this.maxHealth = health;
     }
 
     public void decreaseHealth(int damageTaken) {
@@ -31,6 +34,14 @@ public class Player extends Entity {
 
     public int getScore() {
         return this.score;
+    }
+
+    public int getMaxHealth() {
+        return this.maxHealth;
+    }
+
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
     }
 
     public void calculatePosition(Position position) {

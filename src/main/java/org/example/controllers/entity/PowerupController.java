@@ -6,6 +6,7 @@ import org.example.controllers.GameController;
 import org.example.gui.GUI;
 import org.example.model.Position;
 import org.example.model.arena.Arena;
+import org.example.model.entities.powerups.HealthBoost;
 import org.example.model.entities.powerups.HealthRegen;
 import org.example.model.entities.powerups.Powerup;
 import java.io.IOException;
@@ -31,22 +32,11 @@ public class PowerupController extends GameController {
 
     public void createPowerup(int x, int y) {
 
-        /* To add later
-        switch (random) {
-            case 0:
-                getModel().addPowerup(new Powerup(new Position(x, y), Powerup.POWERUP_TYPE.HEALTH));
-                break;
-            case 1:
-                getModel().addPowerup(new Powerup(new Position(x, y), Powerup.POWERUP_TYPE.AMMO));
-                break;
-            case 2:
-                getModel().addPowerup(new Powerup(new Position(x, y), Powerup.POWERUP_TYPE.SPEED));
-                break;
-        }
-         */
+        //Randomize type of powerup
+        int random = (int) (Math.random() * 2);
 
-        HealthRegen healthRegen = new HealthRegen(x, y);
-        getModel().addPowerup(healthRegen);
+        if ((random == 0) && (getModel().getPlayer().getMaxHealth() < 200)) getModel().addPowerup(new HealthBoost(x, y));
+        if (random == 1) getModel().addPowerup(new HealthRegen(x, y));
     }
 
     @Override
