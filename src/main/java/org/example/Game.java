@@ -1,7 +1,7 @@
 package org.example;
 
 import org.example.gui.LanternaGUI;
-import org.example.model.Menu;
+import org.example.model.menu.Menu;
 import org.example.states.menu.MenuState;
 import org.example.states.State;
 

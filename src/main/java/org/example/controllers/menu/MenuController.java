@@ -3,7 +3,7 @@ package org.example.controllers.menu;
 import org.example.Game;
 import org.example.controllers.Controller;
 import org.example.gui.GUI;
-import org.example.model.Menu;
+import org.example.model.menu.Menu;
 import org.example.model.arena.RandomArenaBuilder;
 import org.example.states.GameState;
 import org.example.states.menu.ControlsMenuState;
@@ -19,10 +19,10 @@ public class MenuController extends Controller<Menu> {
     @Override
     public void step(Game game, GUI.GUI_ACTION action, long time) throws IOException {
         switch (action) {
-            case UP:
+            case ARROW_UP:
                 getModel().previousEntry();
                 break;
-            case DOWN:
+            case ARROW_DOWN:
                 getModel().nextEntry();
                 break;
             case SELECT:

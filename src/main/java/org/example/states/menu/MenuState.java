@@ -4,7 +4,7 @@ import org.example.controllers.Controller;
 import org.example.controllers.menu.MenuController;
 import org.example.states.State;
 import org.example.viewers.menu.MenuViewer;
-import org.example.model.Menu;
+import org.example.model.menu.Menu;
 import org.example.viewers.Viewer;
 
 public class MenuState extends State<Menu> {
@@ -15,6 +15,11 @@ public class MenuState extends State<Menu> {
     @Override
     protected Viewer<Menu> getViewer() {
         return new MenuViewer(getModel());
+    }
+
+    @Override
+    protected Viewer<Menu> getViewer(int score) {
+        return null;
     }
 
     @Override

@@ -16,9 +16,20 @@ import java.util.List;
 public class EnemyController extends GameController{
 
     private long timeLastMovement;
+
+    private int maxEnemies;
     public EnemyController(Arena arena) {
         super(arena);
         this.timeLastMovement = 0;
+        this.maxEnemies = 10;
+    }
+
+    public int getMaxEnemies() {
+        return this.maxEnemies;
+    }
+
+    public void setMaxEnemies(int maxEnemies) {
+        this.maxEnemies = maxEnemies;
     }
 
     public boolean detectsPlayer(Enemy enemy){

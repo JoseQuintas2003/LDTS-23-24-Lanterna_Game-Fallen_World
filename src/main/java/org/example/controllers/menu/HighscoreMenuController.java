@@ -3,7 +3,7 @@ package org.example.controllers.menu;
 import org.example.Game;
 import org.example.controllers.Controller;
 import org.example.gui.GUI;
-import org.example.model.Menu;
+import org.example.model.menu.Menu;
 import org.example.states.menu.MenuState;
 
 import java.io.IOException;

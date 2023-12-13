@@ -1,7 +1,7 @@
 package org.example.viewers.menu;
 
 import org.example.gui.GUI;
-import org.example.model.Menu;
+import org.example.model.menu.Menu;
 import org.example.model.Position;
 import org.example.viewers.Viewer;
 

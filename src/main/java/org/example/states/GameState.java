@@ -17,6 +17,11 @@ public class GameState extends State<Arena>{
     }
 
     @Override
+    protected Viewer<Arena> getViewer(int score) {
+        return null;
+    }
+
+    @Override
     protected Controller<Arena> getController() {
         return new ArenaController(getModel());
     }

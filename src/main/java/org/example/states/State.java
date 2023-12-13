@@ -20,7 +20,15 @@ public abstract class State<T> {
         this.controller = getController();
     }
 
+    public State(T model, int score) {
+        this.model = model;
+        this.viewer = getViewer(score);
+        this.controller = getController();
+    }
+
     protected abstract Viewer<T> getViewer();
+
+    protected abstract Viewer<T> getViewer(int score);
 
     protected abstract Controller<T> getController();
 
