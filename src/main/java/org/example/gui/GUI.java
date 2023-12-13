@@ -2,7 +2,6 @@ package org.example.gui;
 
 import org.example.model.Position;
 
-import java.awt.*;
 import java.io.IOException;
 
 public interface GUI {
@@ -11,7 +10,7 @@ public interface GUI {
 
     //GUI_ACTION getMouseAction() throws IOException;
 
-    void drawHero(Position position);
+    void drawPlayer(Position position);
 
     void drawHeroHealth(Position position, int health);
     void drawHeroScore(Position position, int score);

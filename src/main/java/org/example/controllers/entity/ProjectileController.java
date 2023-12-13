@@ -47,19 +47,19 @@ public class ProjectileController extends GameController {
 
         switch (action) {
             case ARROW_UP -> {
-                Projectile projectile = new Projectile(playerPosX, playerPosY - 1, 5, new Position(playerPosX, playerPosY - 25));
+                Projectile projectile = new Projectile(playerPosX, playerPosY - 1, 2, new Position(playerPosX, playerPosY - 25));
                 getModel().addProjectile(projectile);
             }
             case ARROW_DOWN -> {
-                Projectile projectile = new Projectile(playerPosX, playerPosY + 1, 5, new Position(playerPosX, playerPosY + 25));
+                Projectile projectile = new Projectile(playerPosX, playerPosY + 1, 2, new Position(playerPosX, playerPosY + 25));
                 getModel().addProjectile(projectile);
             }
             case ARROW_LEFT -> {
-                Projectile projectile = new Projectile(playerPosX - 1, playerPosY, 5, new Position(playerPosX - 25, playerPosY));
+                Projectile projectile = new Projectile(playerPosX - 1, playerPosY, 2, new Position(playerPosX - 25, playerPosY));
                 getModel().addProjectile(projectile);
             }
             case ARROW_RIGHT -> {
-                Projectile projectile = new Projectile(playerPosX + 1, playerPosY, 5, new Position(playerPosX + 25, playerPosY));
+                Projectile projectile = new Projectile(playerPosX + 1, playerPosY, 2, new Position(playerPosX + 25, playerPosY));
                 getModel().addProjectile(projectile);
             }
         }

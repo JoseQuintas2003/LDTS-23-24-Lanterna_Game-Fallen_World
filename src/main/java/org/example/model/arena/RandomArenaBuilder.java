@@ -41,7 +41,7 @@ public class RandomArenaBuilder extends ArenaBuilder{
         List<Enemy> enemies = new ArrayList<>();
 
         for (int i = 1; i < 4; i++) {
-            enemies.add(new Enemy(i * 11, i * 9 + 1, 100));
+            enemies.add(new Enemy(i * 11, i * 9 + 1, 10));
         }
 
         return enemies;

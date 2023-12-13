@@ -17,11 +17,14 @@ public class ArenaController extends Controller<Arena>{
 
     private final ProjectileController projectileController;
 
+    private int timeLastStep;
+
     public ArenaController(Arena arena) {
         super(arena);
         this.playerController = new PlayerController(arena);
         this.enemyController = new EnemyController(arena);
         this.projectileController = new ProjectileController(arena);
+        timeLastStep = 0;
     }
 
     @Override
