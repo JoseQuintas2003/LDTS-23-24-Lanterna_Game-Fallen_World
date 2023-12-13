@@ -70,14 +70,14 @@ public class ProjectileController extends GameController {
     public void step(Game game, GUI.GUI_ACTION action, long time){
         List<Projectile> projectileToRemove = new ArrayList<>();
 
-        if (setLastMovement(action) && getModel().countProjectiles() < this.maxProjectiles) {
-            createProjectile(lastMovement);
-        }
-
         for (Projectile projectile : getModel().getProjectileList()) {
             if (projectile.getPosition().equals(projectile.getFinalPosition())) {
                 projectileToRemove.add(projectile);
-            } else if (time - timeLastMovement > game.FPS / 10){
+            }
+            else if (getModel().isEnemy(projectile.getPosition())){
+                projectileToRemove.add(projectile);
+            }
+            else if (time - timeLastMovement > game.FPS / 10){
                 canMove = false;
                 Position nextPosition = projectile.calculatePosition(projectile.getFinalPosition(), 1);
 
@@ -93,6 +93,10 @@ public class ProjectileController extends GameController {
 
         for (Projectile projectile : projectileToRemove) {
             getModel().removeProjectile(projectile);
+        }
+
+        if (setLastMovement(action) && getModel().countProjectiles() < this.maxProjectiles) {
+            createProjectile(lastMovement);
         }
     }
 }
