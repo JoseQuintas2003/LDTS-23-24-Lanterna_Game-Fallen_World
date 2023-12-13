@@ -1,10 +1,11 @@
-package org.example.viewers;
+package org.example.viewers.menu;
 
 import org.example.gui.GUI;
 import org.example.model.Menu;
 import org.example.model.Position;
+import org.example.viewers.Viewer;
 
-public class MenuViewer extends Viewer<Menu>{
+public class MenuViewer extends Viewer<Menu> {
     public MenuViewer(Menu model) {
         super(model);
     }

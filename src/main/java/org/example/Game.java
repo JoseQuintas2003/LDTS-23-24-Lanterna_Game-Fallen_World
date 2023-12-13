@@ -1,26 +1,13 @@
 package org.example;
 
-import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.screen.Screen;
-import com.googlecode.lanterna.screen.TerminalScreen;
-import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
-import com.googlecode.lanterna.terminal.Terminal;
 import org.example.gui.LanternaGUI;
-import org.example.gui.GUI;
-import org.example.model.Position;
-import org.example.model.arena.Arena;
-import org.example.model.arena.RandomArenaBuilder;
-import org.example.model.entities.Player;
-import org.example.model.entities.Wall;
-import org.example.states.GameState;
 import org.example.model.Menu;
-import org.example.states.MenuState;
+import org.example.states.menu.MenuState;
 import org.example.states.State;
 
 import java.awt.*;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.ArrayList;
 
 public class Game {
     private final LanternaGUI GUI;
@@ -30,7 +17,7 @@ public class Game {
     private State state;
 
     public Game() throws IOException, FontFormatException, URISyntaxException {
-        this.GUI = new LanternaGUI(50, 50);
+        this.GUI = new LanternaGUI(60, 30);
         this.state = new MenuState(new Menu());
         //this.state = new GameState(new RandomArenaBuilder(50, 50).createArena());
     }

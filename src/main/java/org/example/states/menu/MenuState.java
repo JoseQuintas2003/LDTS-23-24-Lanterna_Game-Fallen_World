@@ -1,14 +1,13 @@
-package org.example.states;
+package org.example.states.menu;
 
 import org.example.controllers.Controller;
-import org.example.controllers.MenuController;
-import org.example.viewers.MenuViewer;
+import org.example.controllers.menu.MenuController;
+import org.example.states.State;
+import org.example.viewers.menu.MenuViewer;
 import org.example.model.Menu;
 import org.example.viewers.Viewer;
 
-import java.awt.*;
-
-public class MenuState extends State<Menu>{
+public class MenuState extends State<Menu> {
     public MenuState(Menu model) {
         super(model);
     }
