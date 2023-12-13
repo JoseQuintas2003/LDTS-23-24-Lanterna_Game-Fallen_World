@@ -34,6 +34,10 @@ public class EnemyController extends GameController{
                     enemy.decreaseHealth(projectile.getDamage());
                     System.out.printf("Enemy Health: %d\n", enemy.getHealth());
                 }
+                if (projectile.getPosition().equals(enemy.getPosition())) {
+                    enemy.decreaseHealth(projectile.getDamage());
+                    System.out.printf("Enemy Health: %d\n", enemy.getHealth());
+                }
             }
         }
     }
