@@ -17,6 +17,6 @@ public class ControlsMenuViewer extends Viewer<Menu> {
         gui.drawText(new Position(5, 7), "Up/Down Arrow - Fire bullet up/down", "#FFFFFF");
         gui.drawText(new Position(5, 8), "Left/Right Arrow - Fire bullet left/right", "#FFFFFF");
         gui.drawText(new Position(5, 10), "Q - Quit Game", "#FFFFFF");
-        gui.drawText(new Position(5, 13), "Enter - Return to Main Menu", "#FFFFFF");
+        gui.drawText(new Position(5, 15), "Press Enter to return to Main Menu", "#FFFFFF");
     }
 }

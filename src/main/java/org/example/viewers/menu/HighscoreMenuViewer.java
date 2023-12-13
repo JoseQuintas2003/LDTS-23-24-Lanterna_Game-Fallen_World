@@ -43,5 +43,7 @@ public class HighscoreMenuViewer extends Viewer<Menu> {
         for (int i = 0; i < 10; i++) {
             gui.drawText(new Position(5, 7 + i), (i + 1) + ". " + getHighScore(i), "#FFFFFF");
         }
+
+        gui.drawText(new Position(5, 20), "Press Enter to return to menu", "#FFFFFF");
     }
 }
