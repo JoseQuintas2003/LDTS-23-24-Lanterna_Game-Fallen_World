@@ -7,6 +7,7 @@ import org.example.model.entities.NPC;
 import org.example.model.entities.Wall;
 import org.example.model.entities.Projectile;
 import org.example.model.arena.Arena;
+import org.example.model.entities.powerups.Powerup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +21,8 @@ public class Arena {
     private List<NPC> NPCsList;
     private List<Wall> wallList;
     private List<Projectile> projectileList;
+
+    private ArrayList<Powerup> powerupsList;
 
     //Constructor
     public Arena(int width, int height) {
@@ -95,6 +98,24 @@ public class Arena {
 
     public int countProjectiles() {
         return this.projectileList.size();
+    }
+
+    //Powerup List Methods
+
+    public List<Powerup> getPowerupsList() {
+        return this.powerupsList;
+    }
+
+    public void setPowerupsList(ArrayList<Powerup> powerupsList) {
+        this.powerupsList = powerupsList;
+    }
+
+    public void addPowerup(Powerup powerup) {
+        this.powerupsList.add(powerup);
+    }
+
+    public void removePowerup(Powerup powerup) {
+        this.powerupsList.remove(powerup);
     }
 
     //Other Methods

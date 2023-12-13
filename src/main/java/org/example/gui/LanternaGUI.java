@@ -165,6 +165,11 @@ public class LanternaGUI implements GUI{
     }
 
     @Override
+    public void drawHealthRegen(Position position) {
+        drawCharacter(position.getX(), position.getY(), '%', "#FF00FF");
+    }
+
+    @Override
     public void clear() {
         screen.clear();
     }

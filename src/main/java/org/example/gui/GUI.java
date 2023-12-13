@@ -31,6 +31,8 @@ public interface GUI {
 
     void drawText(Position position, String menu, String s);
 
+    void drawHealthRegen(Position position);
+
     enum GUI_ACTION {
         UP,
         RIGHT,

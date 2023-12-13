@@ -1,10 +1,12 @@
 package org.example.model.arena;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.example.model.entities.Enemy;
 import org.example.model.entities.Player;
 import org.example.model.entities.Wall;
+import org.example.model.entities.powerups.Powerup;
 
 public abstract class  ArenaBuilder {
     public Arena createArena() {
@@ -13,6 +15,7 @@ public abstract class  ArenaBuilder {
         arena.setPlayer(createPlayer());
         arena.setEnemyList(createEnemies());
         arena.setWallList(createWalls());
+        arena.setPowerupsList(createPowerups());
 
         return arena;
     }
@@ -26,5 +29,7 @@ public abstract class  ArenaBuilder {
     protected abstract List<Enemy> createEnemies();
 
     protected abstract List<Wall> createWalls();
+
+    protected abstract ArrayList<Powerup> createPowerups();
 
 }

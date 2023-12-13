@@ -3,8 +3,11 @@ package org.example.model.arena;
 import org.example.model.entities.Enemy;
 import org.example.model.entities.Player;
 import org.example.model.entities.Wall;
+import org.example.model.entities.powerups.HealthRegen;
+import org.example.model.entities.powerups.Powerup;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -40,8 +43,16 @@ public class RandomArenaBuilder extends ArenaBuilder{
 
         List<Enemy> enemies = new ArrayList<>();
 
-        for (int i = 1; i < 4; i++) {
-            enemies.add(new Enemy(i * 11, i * 9 + 1, 10));
+        for (int i=0; i < 6; i++) {
+            int randomX = rng.nextInt(width - 2) + 1;
+            int randomY = rng.nextInt(height - 6) + 5;
+
+            if (randomX == 10 && randomY == 10) {
+                randomX = rng.nextInt(width - 2) + 1;
+                randomY = rng.nextInt(height - 6) + 5;
+            }
+
+            enemies.add(new Enemy(randomX, randomY, 10));
         }
 
         return enemies;
@@ -62,5 +73,14 @@ public class RandomArenaBuilder extends ArenaBuilder{
         }
 
         return walls;
+    }
+
+    @Override
+    protected ArrayList<Powerup> createPowerups() {
+        ArrayList<Powerup> powerups = new ArrayList<>();
+
+        powerups.add(new HealthRegen(20, 20));
+
+        return powerups;
     }
 }

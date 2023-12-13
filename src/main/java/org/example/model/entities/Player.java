@@ -19,6 +19,8 @@ public class Player extends Entity {
         this.health = this.health - damageTaken;
     }
 
+    public void increaseHealth(int health) { this.health = this.health + health; }
+
     public void increaseScore(int score) {
         this.score = this.score + score;
     }

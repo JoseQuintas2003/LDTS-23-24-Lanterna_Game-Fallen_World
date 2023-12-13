@@ -21,7 +21,7 @@ public class EnemyController extends GameController{
     public EnemyController(Arena arena) {
         super(arena);
         this.timeLastMovement = 0;
-        this.maxEnemies = 10;
+        this.maxEnemies = (arena.getWidth() - 2) * (arena.getHeight() - 6);
     }
 
     public int getMaxEnemies() {
