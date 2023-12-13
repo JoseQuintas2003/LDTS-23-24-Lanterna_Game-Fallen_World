@@ -42,5 +42,6 @@ public class GameoverMenuViewer extends Viewer<GameoverMenu> {
         gui.drawText(new Position(5, 20), "Press Enter to save your score", "#FFFFFF");
 
         gui.drawText(new Position(5, 23), "Press Q to return to the main menu", "#FFFFFF");
+        gui.drawText(new Position(5, 24), "Note: This will not save your score", "#FFFFFF");
     }
 }
