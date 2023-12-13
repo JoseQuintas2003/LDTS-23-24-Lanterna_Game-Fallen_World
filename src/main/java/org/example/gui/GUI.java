@@ -30,6 +30,8 @@ public interface GUI {
 
     void drawProjectile(Position position);
 
+    void drawText(Position position, String menu, String s);
+
     enum GUI_ACTION {
         UP,
         RIGHT,
@@ -41,7 +43,8 @@ public interface GUI {
         ARROW_LEFT,
         ARROW_RIGHT,
         ARROW_DOWN,
-        ARROW_UP
+        ARROW_UP,
+        SELECT
         //To be expanded later
     }
 

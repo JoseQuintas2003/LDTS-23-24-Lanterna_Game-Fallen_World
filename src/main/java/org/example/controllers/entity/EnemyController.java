@@ -71,7 +71,7 @@ public class EnemyController extends GameController{
 
     @Override
     public void step(Game game, GUI.GUI_ACTION action, long time) throws IOException {
-        if (time - timeLastMovement > game.FPS / 0.4 ) {
+        if (time - timeLastMovement > game.FPS / 0.2 ) {
             for (Enemy enemy : getModel().getEnemiesList()){
 
                 //Enemy Detection of Player and Movement

@@ -55,7 +55,7 @@ public class PlayerController extends GameController {
 
     @Override
     public void step(Game game, GUI.GUI_ACTION action, long time) throws IOException {
-        if (time - timeLastMovement < game.FPS /* / getModel().getPlayer().getSpeedModifier()*/) {
+        if (time - timeLastMovement < (game.FPS * 2)/* getModel().getPlayer().getSpeedModifier()*/) {
             switch (action) {
                 case UP -> {
                     this.lastAction = GUI.GUI_ACTION.UP;

@@ -13,6 +13,8 @@ import org.example.model.arena.RandomArenaBuilder;
 import org.example.model.entities.Player;
 import org.example.model.entities.Wall;
 import org.example.states.GameState;
+import org.example.model.Menu;
+import org.example.states.MenuState;
 import org.example.states.State;
 
 import java.awt.*;
@@ -23,17 +25,22 @@ import java.util.ArrayList;
 public class Game {
     private final LanternaGUI GUI;
 
-    public final int FPS = 200;
+    public final int FPS = 100;
 
     private State state;
 
     public Game() throws IOException, FontFormatException, URISyntaxException {
         this.GUI = new LanternaGUI(50, 50);
-        this.state = new GameState(new RandomArenaBuilder(50, 50).createArena());
+        this.state = new MenuState(new Menu());
+        //this.state = new GameState(new RandomArenaBuilder(50, 50).createArena());
     }
 
     public LanternaGUI getGUI(){
         return this.GUI;
+    }
+
+    public void setState(State state) {
+        this.state = state;
     }
 
     //To change later
@@ -68,31 +75,6 @@ public class Game {
 
         //As linhas abaixo são de caracter puramente ilustrativo, para mostrar que o código está a funcionar e devem ser removidas no futuro
 
-        org.example.gui.GUI.GUI_ACTION keyboardAction;
-
-        while (true) {
-            keyboardAction = game.getGUI().getKeyboardAction();
-
-            if (keyboardAction == org.example.gui.GUI.GUI_ACTION.UP) {
-                System.out.println("UP");
-            }
-            if (keyboardAction == org.example.gui.GUI.GUI_ACTION.DOWN) {
-                System.out.println("DOWN");
-            }
-            if (keyboardAction == org.example.gui.GUI.GUI_ACTION.LEFT) {
-                System.out.println("LEFT");
-            }
-            if (keyboardAction == org.example.gui.GUI.GUI_ACTION.RIGHT) {
-                System.out.println("RIGHT");
-            }
-            if (keyboardAction == org.example.gui.GUI.GUI_ACTION.FIRE) {
-                System.out.println("FIRE");
-            }
-            if (keyboardAction == org.example.gui.GUI.GUI_ACTION.QUIT) {
-                System.out.println("QUIT");
-                break;
-            }
-        }
         game.getGUI().close();
     }
 }

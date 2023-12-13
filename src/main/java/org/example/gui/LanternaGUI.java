@@ -78,6 +78,7 @@ public class LanternaGUI implements GUI{
             case ArrowDown -> GUI_ACTION.ARROW_DOWN;
             case ArrowLeft -> GUI_ACTION.ARROW_LEFT;
             case ArrowRight -> GUI_ACTION.ARROW_RIGHT;
+            case Enter -> GUI_ACTION.SELECT;
 
             case Character -> switch (keyStroke.getCharacter()) {
                 case 'q' -> GUI_ACTION.QUIT;
@@ -155,6 +156,12 @@ public class LanternaGUI implements GUI{
     @Override
     public void drawProjectile(Position position) {
         drawCharacter(position.getX(), position.getY(), '*', "#D32500");
+    }
+
+    public void drawText(Position position, String menu, String s) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.Factory.fromString(s));
+        tg.putString(position.getX(), position.getY() + 1, menu);
     }
 
     @Override
