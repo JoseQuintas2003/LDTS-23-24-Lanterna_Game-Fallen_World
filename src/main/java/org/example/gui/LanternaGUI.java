@@ -166,14 +166,14 @@ public class LanternaGUI implements GUI{
 
     @Override
     public void drawHealthRegen(Position position) {
-        drawCharacter(position.getX(), position.getY(), '%', "#FF00FF");
+        drawCharacter(position.getX(), position.getY(), '+', "#FF00FF");
     }
 
     @Override
-    public void drawHealthBoost(Position position) { drawCharacter(position.getX(), position.getY(), '=', "#FF00FF"); }
+    public void drawHealthBoost(Position position) { drawCharacter(position.getX(), position.getY(), 'H', "#FF00FF"); }
 
     @Override
-    public void drawSpeedBoost(Position position) { drawCharacter(position.getX(), position.getY(), '+', "#FF00FF"); }
+    public void drawSpeedBoost(Position position) { drawCharacter(position.getX(), position.getY(), 'S', "#FF00FF"); }
 
     @Override
     public void clear() {
