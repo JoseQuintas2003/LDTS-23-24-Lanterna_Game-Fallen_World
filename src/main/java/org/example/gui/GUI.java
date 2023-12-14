@@ -12,8 +12,11 @@ public interface GUI {
 
     void drawPlayer(Position position);
 
-    void drawHeroHealth(Position position, int health);
-    void drawHeroScore(Position position, int score);
+    void drawHeroHealth(int health);
+
+    void drawHeroScore(int score);
+
+    void drawBullets(int currentBullets, int maxBullets);
 
     void drawWall(Position position);
 

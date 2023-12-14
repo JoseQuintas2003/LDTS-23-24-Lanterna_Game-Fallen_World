@@ -4,9 +4,6 @@ import com.googlecode.lanterna.TerminalSize;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.input.KeyStroke;
-import com.googlecode.lanterna.input.KeyType;
-import com.googlecode.lanterna.input.MouseAction;
-import com.googlecode.lanterna.input.MouseActionType;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
 import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
@@ -19,7 +16,6 @@ import java.io.File;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.Arrays;
 
 public class LanternaGUI implements GUI{
 
@@ -121,21 +117,30 @@ public class LanternaGUI implements GUI{
     }
 
     @Override
-    public void drawHeroHealth(Position position, int health) {
+    public void drawHeroHealth(int health) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
-        tg.putString(position.getX(), position.getY() + 1, "HP");
+        tg.putString(0, 1, "HP");
         tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
-        tg.putString(position.getX() + 2, position.getY() + 1, ":" + health);
+        tg.putString(2, 1, ":" + health);
     }
 
     @Override
-    public void drawHeroScore(Position position, int score) {
+    public void drawHeroScore(int score) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
-        tg.putString(position.getX(), position.getY() + 2, "Score");
+        tg.putString(0, 3, "Score");
         tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
-        tg.putString(position.getX() + 5, position.getY() + 2, ":" + score);
+        tg.putString(5, 3, ":" + score);
+    }
+
+    @Override
+    public void drawBullets(int currentBullets, int maxBullets) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
+        tg.putString(41, 1, "Bullets");
+        tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
+        tg.putString(48, 1, ":" + currentBullets + "/" + maxBullets);
     }
 
     @Override

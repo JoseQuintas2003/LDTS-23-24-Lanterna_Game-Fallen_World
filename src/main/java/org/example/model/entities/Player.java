@@ -8,6 +8,10 @@ public class Player extends Entity {
     private int maxHealth;
     private int score;
 
+    private int currentBulletCount = 0;
+
+    private int maxBulletCount = 30;
+
     public int SPEED = 1;
 
     public Player(int x, int y, int health, int score) {
@@ -42,6 +46,22 @@ public class Player extends Entity {
 
     public void setMaxHealth(int maxHealth) {
         this.maxHealth = maxHealth;
+    }
+
+    public int getCurrentBulletCount() {
+        return this.currentBulletCount;
+    }
+
+    public void setCurrentBulletCount(int currentBulletCount) {
+        this.currentBulletCount = currentBulletCount;
+    }
+
+    public int getMaxBulletCount() {
+        return this.maxBulletCount;
+    }
+
+    public void setMaxBulletCount(int maxBulletCount) {
+        this.maxBulletCount = maxBulletCount;
     }
 
     public void calculatePosition(Position position) {
