@@ -12,7 +12,7 @@ import java.net.URISyntaxException;
 public class Game {
     private final LanternaGUI GUI;
 
-    public final int FPS = 100;
+    public final int FPS = 75;
 
     private State state;
 
