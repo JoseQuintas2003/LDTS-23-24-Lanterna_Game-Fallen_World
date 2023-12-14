@@ -1,11 +1,7 @@
 package org.example.model.arena;
 
 import org.example.model.Position;
-import org.example.model.entities.Enemy;
-import org.example.model.entities.Player;
-import org.example.model.entities.NPC;
-import org.example.model.entities.Wall;
-import org.example.model.entities.Projectile;
+import org.example.model.entities.*;
 import org.example.model.arena.Arena;
 import org.example.model.entities.powerups.Powerup;
 
@@ -22,6 +18,8 @@ public class Arena {
     private List<Wall> wallList;
     private List<Projectile> projectileList;
 
+    private ArrayList<Weapon> weaponsList;
+
     private ArrayList<Powerup> powerupsList;
 
     //Constructor
@@ -29,6 +27,11 @@ public class Arena {
         this.width = width;
         this.height = height;
         this.projectileList = new ArrayList<Projectile>();
+        this.enemiesList = new ArrayList<Enemy>();
+        this.NPCsList = new ArrayList<NPC>();
+        this.wallList = new ArrayList<Wall>();
+        this.powerupsList = new ArrayList<Powerup>();
+        this.weaponsList = new ArrayList<Weapon>();
     }
 
     //Getter Methods
@@ -118,11 +121,24 @@ public class Arena {
         this.powerupsList.remove(powerup);
     }
 
+    //Weapon List Methods
+
+    public ArrayList<Weapon> getWeaponsList() {
+        return this.weaponsList;
+    }
+
+    public void addWeapon(Weapon weapon) {
+        this.weaponsList.add(weapon);
+    }
+
+    public void removeWeapon(Weapon weapon) {
+        this.weaponsList.remove(weapon);
+    }
+
     //Other Methods
 
     public boolean isEnemy(Position position) {
-        if (enemiesList == null)
-            return false;
+        if (enemiesList == null) return false;
 
         for (Enemy enemy : enemiesList)
             if (enemy.getPosition().equals(position))
@@ -131,8 +147,7 @@ public class Arena {
     }
 
     public boolean isNPC(Position position) {
-        if (NPCsList == null)
-            return false;
+        if (NPCsList == null) return false;
 
         for (NPC npc : NPCsList)
             if (npc.getPosition().equals(position))
@@ -146,8 +161,37 @@ public class Arena {
                 return true;
         return false;
     }
-    //Returns true if the position is not a wall, enemy, npc or player and false otherwise
+
+    public boolean isPowerup(Position position) {
+        if (powerupsList == null) return false;
+
+        for (Powerup powerup : powerupsList)
+            if (powerup.getPosition().equals(position))
+                return true;
+        return false;
+    }
+
+    public boolean isWeapon(Position position) {
+        if (weaponsList == null) return false;
+
+        for (Weapon weapon : weaponsList)
+            if (weapon.getPosition().equals(position))
+                return true;
+        return false;
+    }
+
+    public boolean isProjectile(Position position) {
+        if (projectileList == null) return false;
+
+        for (Projectile projectile : projectileList)
+            if (projectile.getPosition().equals(position))
+                return true;
+        return false;
+    }
+
+
+    //Returns true if the position is not a wall, enemy, npc, projectile, weapon, powerup or player and false otherwise
     public boolean isEmpty(Position position) {
-        return !isWall(position) && !isEnemy(position) && !isNPC(position) && !player.getPosition().equals(position);
+        return !isPowerup(position) && !isWeapon(position) && !isProjectile(position) && !isWall(position) && !isEnemy(position) && !isNPC(position) && !player.getPosition().equals(position);
     }
 }

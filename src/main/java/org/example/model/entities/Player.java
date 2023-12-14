@@ -8,9 +8,13 @@ public class Player extends Entity {
     private int maxHealth;
     private int score;
 
-    private int currentBulletCount = 0;
+    private int currentBulletCount;
 
-    private int maxBulletCount = 10;
+    private int maxBulletCount;
+
+    private Weapon currentWeapon;
+
+    private int maxProjectiles;
 
     public int SPEED = 1;
 
@@ -20,6 +24,10 @@ public class Player extends Entity {
         this.health = health;
         this.score = score;
         this.maxHealth = health;
+        this.currentBulletCount = 10;
+        this.maxBulletCount = 10;
+        this.maxProjectiles = 1;
+        this.currentWeapon = new Weapon(0, 0, 2, 10, "Pistol");
     }
 
     public void decreaseHealth(int damageTaken) {
@@ -62,6 +70,22 @@ public class Player extends Entity {
 
     public void setMaxBulletCount(int maxBulletCount) {
         this.maxBulletCount = maxBulletCount;
+    }
+
+    public Weapon getCurrentWeapon() {
+        return this.currentWeapon;
+    }
+
+    public void setCurrentWeapon(Weapon currentWeapon) {
+        this.currentWeapon = currentWeapon;
+    }
+
+    public int getMaxProjectiles() {
+        return this.maxProjectiles;
+    }
+
+    public void setMaxProjectiles(int maxProjectiles) {
+        this.maxProjectiles = maxProjectiles;
     }
 
     public void calculatePosition(Position position) {

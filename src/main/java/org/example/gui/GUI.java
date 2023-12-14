@@ -18,6 +18,10 @@ public interface GUI {
 
     void drawBullets(int currentBullets, int maxBullets);
 
+    void drawCurrentWeapon(String currentWeapon);
+
+    void drawWeapon(Position position, String weapon);
+
     void drawWall(Position position);
 
     void drawEnemy(Position position);

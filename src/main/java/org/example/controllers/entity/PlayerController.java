@@ -20,7 +20,7 @@ public class PlayerController extends GameController {
     }
 
     public void movePlayer(Position position) {
-        if (getModel().isEmpty(position)) {
+        if (!getModel().isEnemy(position) && !getModel().isWall(position)) {
             getModel().getPlayer().setPosition(position);
         }
     }

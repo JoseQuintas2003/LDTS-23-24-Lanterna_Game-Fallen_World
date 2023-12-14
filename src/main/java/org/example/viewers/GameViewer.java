@@ -20,6 +20,7 @@ public class GameViewer extends Viewer<Arena> {
         drawEntity(gui, getModel().getPlayer(), new PlayerViewer());
         drawEntities(gui, getModel().getProjectileList(), new ProjectileViewer());
         drawEntities(gui, getModel().getPowerupsList(), new PowerupViewer());
+        drawEntities(gui, getModel().getWeaponsList(), new WeaponViewer());
     }
 
     public <T extends Entity> void drawEntities(GUI gui, List<T> entities, EntityViewer<T> viewer) {

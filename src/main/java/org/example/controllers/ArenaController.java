@@ -1,10 +1,7 @@
 package org.example.controllers;
 
 import org.example.Game;
-import org.example.controllers.entity.EnemyController;
-import org.example.controllers.entity.PlayerController;
-import org.example.controllers.entity.PowerupController;
-import org.example.controllers.entity.ProjectileController;
+import org.example.controllers.entity.*;
 import org.example.gui.GUI;
 import org.example.model.Position;
 import org.example.model.arena.Arena;
@@ -25,6 +22,8 @@ public class ArenaController extends Controller<Arena>{
 
     private final PowerupController powerupController;
 
+    private final WeaponController weaponController;
+
     private long timeLastStep;
 
     public ArenaController(Arena arena) {
@@ -33,6 +32,7 @@ public class ArenaController extends Controller<Arena>{
         this.enemyController = new EnemyController(arena);
         this.projectileController = new ProjectileController(arena);
         this.powerupController = new PowerupController(arena);
+        this.weaponController = new WeaponController(arena);
 
         timeLastStep = 0;
     }
@@ -77,6 +77,7 @@ public class ArenaController extends Controller<Arena>{
             enemyController.step(game, action, time);
             projectileController.step(game, action, time);
             powerupController.step(game, action, time);
+            weaponController.step(game, action, time);
         }
 
         if ((time - timeLastStep > calculateSpawnRate(getModel().getPlayer().getScore(), game.FPS)) && (getModel().getEnemiesList().size() < enemyController.getMaxEnemies())) {

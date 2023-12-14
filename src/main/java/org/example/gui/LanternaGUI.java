@@ -139,9 +139,24 @@ public class LanternaGUI implements GUI{
     public void drawBullets(int currentBullets, int maxBullets) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
-        tg.putString(41, 1, "Bullets");
+        tg.putString(39, 1, "Bullets");
         tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
-        tg.putString(48, 1, ":" + currentBullets + "/" + maxBullets);
+        tg.putString(46, 1, ":" + currentBullets + "/" + maxBullets);
+    }
+
+    @Override
+    public void drawCurrentWeapon(String currentWeapon) {
+        TextGraphics tg = screen.newTextGraphics();
+        tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
+        tg.putString(47 - currentWeapon.length(), 3, "Weapon");
+        tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
+        tg.putString(53 - currentWeapon.length(), 3, ":" + currentWeapon);
+    }
+
+    public void drawWeapon(Position position, String weapon) {
+        if (weapon.equals("Assault Rifle")) drawCharacter(position.getX(), position.getY(), 'A', "#47008A");
+        else if (weapon.equals("Machine Gun")) drawCharacter(position.getX(), position.getY(), 'M', "#47008A");
+        else if (weapon.equals("Rocket Launcher")) drawCharacter(position.getX(), position.getY(), 'R', "#47008A");
     }
 
     @Override

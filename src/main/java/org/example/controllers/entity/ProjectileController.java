@@ -6,6 +6,7 @@ import org.example.gui.GUI;
 import org.example.model.Position;
 import org.example.model.arena.Arena;
 import org.example.model.entities.Projectile;
+import org.example.model.entities.Weapon;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -16,14 +17,11 @@ public class ProjectileController extends GameController {
     private GUI.GUI_ACTION lastMovement;
     private long timeLastMovement;
 
-    private int maxProjectiles;
-
     Boolean canMove = true;
 
     public ProjectileController(Arena arena) {
         super(arena);
         this.lastMovement = GUI.GUI_ACTION.ARROW_DOWN;
-        this.maxProjectiles = 1;
         this.timeLastMovement = 0;
     }
 
@@ -35,31 +33,29 @@ public class ProjectileController extends GameController {
         return false;
     }
 
-    public void setMaxProjectiles(int maxProjectiles) {
-        this.maxProjectiles = maxProjectiles;
-    }
-
     public void createProjectile(GUI.GUI_ACTION action) {
         int playerPosX = getModel().getPlayer().getPosition().getX();
         int playerPosY = getModel().getPlayer().getPosition().getY();
 
-        //Add damage specification here after multiple weapons are implemented
+        int weaponDamage = getModel().getPlayer().getCurrentWeapon().getDamage();
+
+
 
         switch (action) {
             case ARROW_UP -> {
-                Projectile projectile = new Projectile(playerPosX, playerPosY - 1, 100, new Position(playerPosX, playerPosY - 25));
+                Projectile projectile = new Projectile(playerPosX, playerPosY - 1, weaponDamage, new Position(playerPosX, playerPosY - 25));
                 getModel().addProjectile(projectile);
             }
             case ARROW_DOWN -> {
-                Projectile projectile = new Projectile(playerPosX, playerPosY + 1, 100, new Position(playerPosX, playerPosY + 25));
+                Projectile projectile = new Projectile(playerPosX, playerPosY + 1, weaponDamage, new Position(playerPosX, playerPosY + 25));
                 getModel().addProjectile(projectile);
             }
             case ARROW_LEFT -> {
-                Projectile projectile = new Projectile(playerPosX - 1, playerPosY, 100, new Position(playerPosX - 25, playerPosY));
+                Projectile projectile = new Projectile(playerPosX - 1, playerPosY, weaponDamage, new Position(playerPosX - 25, playerPosY));
                 getModel().addProjectile(projectile);
             }
             case ARROW_RIGHT -> {
-                Projectile projectile = new Projectile(playerPosX + 1, playerPosY, 100, new Position(playerPosX + 25, playerPosY));
+                Projectile projectile = new Projectile(playerPosX + 1, playerPosY, weaponDamage, new Position(playerPosX + 25, playerPosY));
                 getModel().addProjectile(projectile);
             }
         }
@@ -95,7 +91,7 @@ public class ProjectileController extends GameController {
             getModel().removeProjectile(projectile);
         }
 
-        if (setLastMovement(action) && getModel().countProjectiles() < this.maxProjectiles && getModel().getPlayer().getCurrentBulletCount() > 0) {
+        if (setLastMovement(action) && getModel().countProjectiles() < getModel().getPlayer().getMaxProjectiles() && getModel().getPlayer().getCurrentBulletCount() > 0) {
             createProjectile(lastMovement);
             getModel().getPlayer().setCurrentBulletCount(getModel().getPlayer().getCurrentBulletCount() - 1);
         }
