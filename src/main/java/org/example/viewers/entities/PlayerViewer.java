@@ -10,6 +10,6 @@ public class PlayerViewer implements EntityViewer<Player> {
         gui.drawPlayer(player.getPosition());
         gui.drawHeroHealth(player.getHealth());
         gui.drawHeroScore(player.getScore());
-        gui.drawBullets(30, 30);
+        gui.drawBullets(player.getCurrentBulletCount(), player.getMaxBulletCount());
     }
 }

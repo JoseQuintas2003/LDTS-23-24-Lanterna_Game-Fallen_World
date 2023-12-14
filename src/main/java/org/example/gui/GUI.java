@@ -47,6 +47,7 @@ public interface GUI {
         LEFT,
         NONE,
         FIRE,
+        RELOAD,
         QUIT,
         ARROW_LEFT,
         ARROW_RIGHT,

@@ -10,7 +10,7 @@ public class Player extends Entity {
 
     private int currentBulletCount = 0;
 
-    private int maxBulletCount = 30;
+    private int maxBulletCount = 10;
 
     public int SPEED = 1;
 

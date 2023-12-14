@@ -55,6 +55,8 @@ public class PlayerController extends GameController {
 
     @Override
     public void step(Game game, GUI.GUI_ACTION action, long time) throws IOException {
+        if (action == GUI.GUI_ACTION.RELOAD) getModel().getPlayer().setCurrentBulletCount(getModel().getPlayer().getMaxBulletCount());
+
         if (time - timeLastMovement < (game.FPS / (getModel().getPlayer().SPEED * 0.5))) {
             switch (action) {
                 case UP -> {

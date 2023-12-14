@@ -79,6 +79,7 @@ public class LanternaGUI implements GUI{
             case Character -> switch (keyStroke.getCharacter()) {
                 case 'q' -> GUI_ACTION.QUIT;
                 case 'f' -> GUI_ACTION.FIRE;
+                case 'r' -> GUI_ACTION.RELOAD;
                 case 'w' -> GUI_ACTION.UP;
                 case 'a' -> GUI_ACTION.LEFT;
                 case 's' -> GUI_ACTION.DOWN;

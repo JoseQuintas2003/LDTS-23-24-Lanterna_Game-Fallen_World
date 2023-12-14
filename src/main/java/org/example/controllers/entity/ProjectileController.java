@@ -95,8 +95,9 @@ public class ProjectileController extends GameController {
             getModel().removeProjectile(projectile);
         }
 
-        if (setLastMovement(action) && getModel().countProjectiles() < this.maxProjectiles) {
+        if (setLastMovement(action) && getModel().countProjectiles() < this.maxProjectiles && getModel().getPlayer().getCurrentBulletCount() > 0) {
             createProjectile(lastMovement);
+            getModel().getPlayer().setCurrentBulletCount(getModel().getPlayer().getCurrentBulletCount() - 1);
         }
     }
 }
