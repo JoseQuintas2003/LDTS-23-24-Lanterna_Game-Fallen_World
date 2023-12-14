@@ -8,8 +8,6 @@ public interface GUI {
 
     GUI_ACTION getKeyboardAction() throws IOException;
 
-    //GUI_ACTION getMouseAction() throws IOException;
-
     void drawPlayer(Position position);
 
     void drawHeroHealth(int health);
@@ -25,8 +23,6 @@ public interface GUI {
     void drawWall(Position position);
 
     void drawEnemy(Position position);
-
-    void drawNPC(Position position);
 
     void clear();
 
@@ -58,7 +54,6 @@ public interface GUI {
         ARROW_DOWN,
         ARROW_UP,
         SELECT
-        //To be expanded later
     }
 
 }

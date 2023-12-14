@@ -77,7 +77,7 @@ public class ProjectileController extends GameController {
                 canMove = false;
                 Position nextPosition = projectile.calculatePosition(projectile.getFinalPosition(), 1);
 
-                if (!getModel().isEmpty(nextPosition)) projectileToRemove.add(projectile);
+                if (getModel().isEnemy(nextPosition) || getModel().isWall(nextPosition)) projectileToRemove.add(projectile);
                 else projectile.setPosition(nextPosition);
             }
         }

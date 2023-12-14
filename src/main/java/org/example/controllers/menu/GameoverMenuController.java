@@ -36,7 +36,6 @@ public class GameoverMenuController extends Controller<GameoverMenu> {
             TreeMap<Integer, String> highScoresMap = new TreeMap<>(Comparator.reverseOrder());
             boolean playerFound = false;
 
-            // Read existing scores and store them in a TreeMap
             while (scanner.hasNextLine()) {
                 String line = scanner.nextLine();
                 String[] parts = line.split(" ");
@@ -51,7 +50,7 @@ public class GameoverMenuController extends Controller<GameoverMenu> {
             }
 
             while (highScoresMap.size() > 10) {
-                highScoresMap.pollLastEntry(); // Remove the lowest score
+                highScoresMap.pollLastEntry();
             }
 
             FileWriter writer = new FileWriter("src/main/resources/highscores.txt");

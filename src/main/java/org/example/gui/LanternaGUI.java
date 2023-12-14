@@ -21,7 +21,6 @@ public class LanternaGUI implements GUI{
 
     private final Screen screen;
 
-    //Default Constructor
     public LanternaGUI(Screen screen) {
         this.screen = screen;
     }
@@ -91,21 +90,6 @@ public class LanternaGUI implements GUI{
         };
     }
 
-    /* Isto não funciona, mas tratamos de meter o rato a funcionar depois
-
-    public GUI_ACTION getMouseAction() throws IOException {
-        MouseAction mouseAction = (MouseAction) screen.pollInput();
-
-        if (mouseAction == null) return GUI_ACTION.NONE;
-
-        return switch (mouseAction.getActionType()) {
-            case CLICK_DOWN -> GUI_ACTION.FIRE;
-            case CLICK_RELEASE -> GUI_ACTION.NONE;
-            default -> GUI_ACTION.NONE;
-        };
-    }
-    */
-
     private void drawCharacter(int x, int y, char c, String color) {
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString(color));
@@ -137,11 +121,13 @@ public class LanternaGUI implements GUI{
 
     @Override
     public void drawBullets(int currentBullets, int maxBullets) {
+        String numBullets = currentBullets + "/" + maxBullets;
+
         TextGraphics tg = screen.newTextGraphics();
         tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
-        tg.putString(39, 1, "Bullets");
+        tg.putString(46 - numBullets.length() , 1, "Bullets:");
         tg.setForegroundColor(TextColor.Factory.fromString("#FF0000"));
-        tg.putString(46, 1, ":" + currentBullets + "/" + maxBullets);
+        tg.putString(54 - numBullets.length(), 1, numBullets);
     }
 
     @Override
@@ -167,11 +153,6 @@ public class LanternaGUI implements GUI{
     @Override
     public void drawEnemy(Position position) {
         drawCharacter(position.getX(), position.getY(), '!', "#D32500");
-    }
-
-    @Override
-    public void drawNPC(Position position) {
-        drawCharacter(position.getX(), position.getY(), '?', "#17BD00");
     }
 
     @Override

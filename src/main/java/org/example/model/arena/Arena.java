@@ -14,7 +14,6 @@ public class Arena {
     private Player player;
 
     private List<Enemy> enemiesList;
-    private List<NPC> NPCsList;
     private List<Wall> wallList;
     private List<Projectile> projectileList;
 
@@ -22,13 +21,11 @@ public class Arena {
 
     private ArrayList<Powerup> powerupsList;
 
-    //Constructor
     public Arena(int width, int height) {
         this.width = width;
         this.height = height;
         this.projectileList = new ArrayList<Projectile>();
         this.enemiesList = new ArrayList<Enemy>();
-        this.NPCsList = new ArrayList<NPC>();
         this.wallList = new ArrayList<Wall>();
         this.powerupsList = new ArrayList<Powerup>();
         this.weaponsList = new ArrayList<Weapon>();
@@ -65,15 +62,6 @@ public class Arena {
 
     public void removeEnemy(Enemy enemy) {
         this.enemiesList.remove(enemy);
-    }
-
-    //NPC List Methods
-    public List<NPC> getNPCsList() {
-        return this.NPCsList;
-    }
-
-    public void setNPCsList(List<NPC> NPCsList) {
-        this.NPCsList = NPCsList;
     }
 
     //Wall List Methods
@@ -146,15 +134,6 @@ public class Arena {
         return false;
     }
 
-    public boolean isNPC(Position position) {
-        if (NPCsList == null) return false;
-
-        for (NPC npc : NPCsList)
-            if (npc.getPosition().equals(position))
-                return true;
-        return false;
-    }
-
     public boolean isWall(Position position) {
         for (Wall wall : wallList)
             if (wall.getPosition().equals(position))
@@ -192,6 +171,6 @@ public class Arena {
 
     //Returns true if the position is not a wall, enemy, npc, projectile, weapon, powerup or player and false otherwise
     public boolean isEmpty(Position position) {
-        return !isPowerup(position) && !isWeapon(position) && !isProjectile(position) && !isWall(position) && !isEnemy(position) && !isNPC(position) && !player.getPosition().equals(position);
+        return !isPowerup(position) && !isWeapon(position) && !isProjectile(position) && !isWall(position) && !isEnemy(position) && !player.getPosition().equals(position);
     }
 }

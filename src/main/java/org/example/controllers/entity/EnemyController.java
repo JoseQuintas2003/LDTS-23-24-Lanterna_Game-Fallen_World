@@ -41,14 +41,9 @@ public class EnemyController extends GameController{
     public void damageEnemies() {
         for (Enemy enemy : getModel().getEnemiesList()) {
             for (Projectile projectile : getModel().getProjectileList()) {
-                if (enemy.projectileHits(projectile.getPosition(), projectile.getFinalPosition())) {
-                    enemy.decreaseHealth(projectile.getDamage());
-                    System.out.printf("Enemy Health: %d\n", enemy.getHealth());
-                }
-                if (projectile.getPosition().equals(enemy.getPosition())) {
-                    enemy.decreaseHealth(projectile.getDamage());
-                    System.out.printf("Enemy Health: %d\n", enemy.getHealth());
-                }
+                if (enemy.projectileHits(projectile.getPosition(), projectile.getFinalPosition())) enemy.decreaseHealth(projectile.getDamage());
+
+                if (projectile.getPosition().equals(enemy.getPosition())) enemy.decreaseHealth(projectile.getDamage());
             }
         }
     }
@@ -89,7 +84,6 @@ public class EnemyController extends GameController{
         if (time - timeLastMovement > game.FPS / 0.2 ) {
             for (Enemy enemy : getModel().getEnemiesList()){
 
-                //Enemy Detection of Player and Movement
                 enemy.detectedPlayer = detectsPlayer(enemy);
 
                 if (enemy.detectedPlayer) {

@@ -50,10 +50,8 @@ public class ArenaController extends Controller<Arena>{
 
     public static double calculateSpawnRate(int score, int FPS) {
 
-        // Calculate the spawn rate using an exponential growth formula
         double spawnRate = 0.035 * Math.exp(score * 0.001);
 
-        // Cap the spawn rate to a maximum value if needed
         double maxSpawnRate = 100.0;  // Adjust as needed
         spawnRate = Math.min(spawnRate, maxSpawnRate);
 
@@ -61,7 +59,6 @@ public class ArenaController extends Controller<Arena>{
             spawnRate = 0.035;
         }
 
-        // Calculate the number of frames per enemy
         double framesPerEnemy = 1.0 / (spawnRate / FPS);
 
         return framesPerEnemy;
@@ -84,6 +81,5 @@ public class ArenaController extends Controller<Arena>{
             addEnemyToArena();
             timeLastStep = time;
         }
-        System.out.println("Enemies: " + getModel().getEnemiesList().size());
     }
 }
