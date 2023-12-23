@@ -30,6 +30,17 @@ You can find the UML diagram for the project, detailing all classes organization
 
 ### KNOWN CODE SMELLS
 
+- Some classes and methods are large, indicating complexity and maintainability issues.
+- There is some duplicate code, which could hinder maintenance efforts and performance.
+- Some Methods have long parameter lists, increasing their complexity.
+- There is some feature envy, where methods from a class rely on data from other classes.
+- There are some Data clumps, indicating the need for better data encapsulation.
+- Some comments have been left in the code, but most are there to better help understand each method's functionalities and responsabilites.
+
 ### TESTING
 
+- The project includes unit tests, as evidenced by the test result files and reports.
+
 ### SELF-EVALUATION
+
+- José Nuno Quintas: 100%
